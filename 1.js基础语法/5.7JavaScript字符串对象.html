@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 基本包装类型
+        var str1 = '许东';
+        console.log(str1.length);
+        // 对象 有 属性和方法 复杂数据类型 也有 类型和方法
+
+        // JS把数据类型分为两类:
+        // 简单数据类型(Number 数字 , string 字符串 , Boolean 布尔值 , Undefined 未定义 , Null 空)
+        // 复杂数据类型(object 对象)
+
+        // 简单数据类型为什么会有length属性?
+        // 基本包装类型 :就是把简单数据类型 包装成为了 复杂数据类型 这样基本数据类型就有了属性和方法。
+
+        // 按道理基本数据类型是没有属性和方法的,而对象才有属性和方法,但上面代码却可以执行,
+        // 这是因为js会把基本数据类型包装为复杂数据类型,其执行过程如下:
+
+        //  JavaScript 语言的6种原始数据类型：undefined、null、布尔值（boolean）、字符串（string）、数值（number）、symbol(es6新增)
+        // 引用数据类型：对象（object）
+        // 由于js的bug, typeof null 为 'object'。 除了null以外，其余原始数据类型均可用typeof判断，针对引用数据类型，可以用instanceof进行判
+
+     
+
+        // (1)把简单数据类型包装为复杂数据类型
+        var temp = new String('andy');
+        // (2)把临时变量的值 给 str
+        str1 = temp;
+        // (3)销毁这个临时变量
+        temo = null;
+
+        // 字符串的不可变
+        // 指的是里面的值不可变,虽然看上去可以改变内容,但其实是地址变了，内存中新开辟了一个内存空间。
+
+        //字符串的不可变性
+        var str = 'xd';
+        console.log(str); // 返回 xd
+        str = 'xzn';
+        console.log(str); // 返回 xzn 
+        // 看上去是变量的值被改变了,其实是地址变了
+        //因为我们字符串的不可变所以不要大量的拼接字符串
+
+        // 根据字符返回位置
+        // 字符串所有的方法,都不会修改字符串本身(字符串是可变的) ,操作完成会返回一个新的字符串。
+        // 方法名           说明
+        // index0f()       "要查找的字符",开始的位置，返回指定内容在元字符串的位置,如果找不到就返回-1, 开始的位置是index索引号
+        // lastlIndexOf()  从后往前找，只找第一个匹配的
+
+        // 字符串对象 根据字符串返回位置 str.indexOf('要查找的字符',[起始位置])
+        var stn = '春天来了,春暖花开'
+        console.log(stn.indexOf('春')); // 返回 0
+        console.log(stn.indexOf('春', [2])); // 返回 5  \\[2]的意思是从索引号2开始找
+
+        console.log('------');
+
+        // 案例
+        // 查找字符串”abcoefoxyozzopp"中所有o出现的位置以及次数
+        // 核心算法:先查找第个o出 现的位置
+        // 然后只要indexOf返回的结果不是-1就继续往后查找
+        // 因为indexOf只能查找到第一个，所以后面的查找，一定是当前索引加1，从而继续查找
+        var stt = 'abcoefoxyozzopp';
+        var index = stt.indexOf('o');
+        while (index !== -1) {
+            console.log(index);
+            index = stt.indexOf('o', index + 1)
+        }
+        // 打印 3 6 9 12
+
+        console.log('------');
+
+        //根据位置返回字符
+        // 方法名              说明                                     使用
+        // charAt(index)       返回指定位置的字符(index字符串的索引号)    str.charAt(0)
+        // charCodeAt(index)   获取指定位置处字符的ASCI码(index索引号)    str.charCodeAt()
+        // str[index]          获取指定位置处字符                       HTML5, 1IE8+支持 和charAt()等效
+
+        // 1.charAt(index)根据位置返回字符
+        var xd = 'xudong';
+        console.log(xd.charAt(3)); // 打印 o 这个打印的是xd变量索引号3的值
+        for (var i = 0; i < xd.length; i++) {
+            console.log(xd.charAt(i)); // 将xudong每个字都单独打印出来
+        }
+
+        // 2.charCodeAt(index) 返回相应索引号的字符串ASCII值 目的:判断用户按下了那个按钮
+        console.log(xd.charCodeAt(0)); // 返回120 这是x的ASCII值
+        console.log(xd.charCodeAt(2)); // 返回100 这书d的ASCII值
+
+        // 3.变量名[index] H5新增
+        console.log(xd[2]); // 返回d 获取xd数组索引号为2的值
+
+        // charAt(index)与xd[index]用起来没什么不一样,不过后一个是新增的
+
+        console.log('------');
+
+        // 例子:判断一个对象是否有该属性
+        var x = {
+            age: 18,
+        }
+        if (x['age']) {
+            console.log('里面有该属性');
+        } else {
+            console.log('没有该属性');
+        }
+
+        // 判断一个字符串'abcoefoxyozzopp' 中出现次数最多的字符，并统计其次数。
+        // x.o = 1;    +3
+        // x.e = 1;    +2
+        // x.a = 2;    +1
+        // 核心算法:利用charAt() 遍历这个字符串
+        // 把每个字符都存储给对象， 如果对象没有该属性，就为1,如果存在了就+1 
+        // 遍历对象，得到最大值和该字符
+
+        var st = 'abcoefoxyozzopp';
+        var o = {}
+        for (let i = 0; i < st.length; i++) {
+            var chars = st.charAt(i)
+            if (o[chars]) {
+                o[chars]++
+            } else {
+                o[chars] = 1
+
+            }
+        }
+        console.log(o);
+        // 2.遍历对象
+        var max = 0;
+        for (var k in o) {
+            // k得到的是属性名
+            // o[k]的到的是属性名
+            if (o[k] > max) {
+                max = o[k]
+            }
+        }
+        console.log(max); // 返回4 因为这个数组o最多有4个
+
+        // 字符串操作方法(重点)
+        // 方法名                           说明
+        // concat(strl,str.,str3...)       concat()方法用于连接两个或多个字符串。拼接字符串，等效于+， +更常用
+        // substr(start,length)            从start位置开始(索引号)，length 取的个数重点记住这个
+        // slice(start, end)               从start位置开始，截取到end位置，end取不到(他们俩都是索引号)
+        // substring(start, end)           从start位置开始，截取到end位置，end取不到基本和slice 相同但是不接受负值
+
+        // 字符串操作方法
+        // 1.concat('字符串1','字符串2')
+        var xx = 'xudong';
+        console.log(xx.concat('22岁')); // 打印 xudong22岁
+
+        // 2.substr('截取的起始位置','截取几个字符');
+        console.log(xx.substr('2', '4')); // 打印 dong 这个代码的2是索引号2 4是获取几位值
+
+        // 3.slice('截取的起始位置', '不填默认到结尾，也可以选组截取到第几位')
+        console.log(xx.slice(2)); //返回 dong
+        console.log(xx.slice(0, 2)); // 返回 xu
+        console.log(xx.slice(2, 6)); // 返回 dong
+
+        // 4.substring(start, end)
+        console.log(xx.substring(2, 6)); // 返回 dong
+        console.log(xx.substring(2, -5)); // 返回 xu  substring将所有负数转换成0
+
+        // 当end接收的参数是负数时，slice会将它字符串的长度与对应的负数相加，结果作为参数；
+        // substr则仅仅是将第一个参数与字符串长度相加后的结果作为第一个参数；
+        // substring则干脆将负参数都直接转换为0
+
+        console.log('------');
+
+        // 其他方法
+        // 1.替换字符 replace('被替换的字符','替换为的字符')
+        var dd = 'xudongxudong';
+        console.log(dd.replace('g', '0')); // 返回 xudon0xudong 它只会把找到的第一个处理，其他不会
+        var str2 = 'aofnrhsoswwjdbso';
+        while (str2.indexOf('o') !== -1) {
+            str2 = str2.replace('o', '*')
+        }
+        console.log(str2); // 打印a*fnrhs*swwjdbs*
+
+        // 2.字符转换为数组 split('分隔符') 与其相反的是join把数组转换为字符串
+        var str3 = 'red,blue,black';
+        console.log(str3.split(',')); // 返回 ["red", "blue", "black"]
+        var str4 = 'red*blue*black';
+        console.log(str4.split('*')); // 返回 ["red", "blue", "black"]
+        // split使用括号里的*来分割字符串
+
+        // ●toUpperCase() //转换大写
+        // ●toLowerCase() //转换小写
+    </script>
+</body>
+
+</html>

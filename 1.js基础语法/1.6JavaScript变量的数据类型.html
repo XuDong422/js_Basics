@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.6JavaScript的数据类型</title>
+  </head>
+  <body>
+    <script>
+      //javaScript拥有动态数据类型，意味着相同的变量可用作不同的类型
+      var int = 10; //这个变量属于Number类型
+      var str = xd; //这个变量属于String类型
+
+      var xd = 22; //这个时候的变量是Number类型
+      xd = '许东'; //这时的变量是String类型
+      xd = '许东'; //这时的变量是String类型
+
+      // JS把数据类型分为两类:
+      // 简单数据类型(Number 数字 , string 字符串 , Boolean 布尔值 , Undefined 未定义 , Null 空)
+      // 复杂数据类型(object 对象)
+
+      // 类型 : 默认值
+      // Number : 0
+      // string : “”
+      // Boolean : “false”
+      // Undefined : undefined
+      // Null : Null
+
+      // 进制自动转化
+      // 8进制 0-7 在赋值的数字前加0 表示8进制
+      var num1 = 010;
+      console.log(num1); // 打印8
+      var num2 = 012;
+      console.log(num2); // 打印10
+
+      // 16进制 0-9 a-f #ffffff 在赋值的数字前加0x 表示16进制
+      var num3 = 0x9;
+      console.log(num3); // 打印9
+      var num4 = 0xa;
+      console.log(num4); // 打印10
+
+      // 打印最大值和最小值
+      console.log(Number.MAX_VALUE); // 打印js中最大的数字
+      console.log(Number.MIN_VALUE); // 打印js中最小的数字
+
+      // 数字类型三个特殊值
+      num5 = Infinity;
+      num6 = -Infinity;
+      num7 = NaN;
+      console.log(num5);
+      console.log(num6);
+      console.log(num7);
+    </script>
+  </body>
+</html>

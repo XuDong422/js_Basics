@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 箭头函数
+        // ES6中新增的定义函数的方式。
+        () => {}
+        const fn = () => {
+            console.log('许东');
+        }
+        fn(); // 许东
+
+
+        // 函数体中只有一句代码，且代码的执行结果就是返回值，可以省略大括号
+        // function sum(num1, num2) {
+        //     return num1 + num2;
+        // }
+        // 两个一样
+        // const sum = (numl, num2) => num1 + num2;
+
+        //在箭头函数中如果形参只有一个形参外侧的小括号也是可以省略的
+        const sum = num => console.log(num);
+        sum(22); // 22
+
+        // 箭头函数不绑定this关键字,箭头函数中的this,指向的是函数定义位置的上下文this。
+        varobj = {
+            age: 20,
+            say: () => {
+                alert(this.age)
+            }
+        }
+        obj.say(); // 返回undefined 因为箭头函数没有this
+    </script>
+</body>
+
+</html>

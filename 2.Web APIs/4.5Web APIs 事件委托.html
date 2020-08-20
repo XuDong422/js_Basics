@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>许东</li>
+        <li>许东</li>
+        <li>许东</li>
+        <li>许东</li>
+    </ul>
+    <script>
+        // 事件冒泡本身的特性,会带来的坏处,也会带来的好处,需要我们灵活掌握。生活中有如下场景:
+        // 有100个人，快递员有100个快递，如果一个个的送花费时间较长。 同时每个人领取的时候,也需
+        // 要排队领取,也花费时间较长,何如?
+        // 解决方案:快递员把100个快递,委托给保安,大家下班自行领取即可。
+        // 优势:快递员省事,委托给保安就可以走了。同学们领取也方便,
+
+        // 事件委托
+        // 事件委托也称为事件代理,在jQuery里面称为事件委派。
+        // 事件委托的核心原理:给父节点添加侦听器，利用事 件冒泡影响每一个子节点
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            alert('xd');
+            e.target.style.backgroundColor = 'blue'
+        })
+    </script>
+</body>
+
+</html>

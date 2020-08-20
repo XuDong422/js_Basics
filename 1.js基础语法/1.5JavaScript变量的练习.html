@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.5JavaScript的练习</title>
+  </head>
+  <body>
+    <script>
+      var tamp;
+      var apple1 = '青苹果';
+      var apple2 = '红苹果';
+      console.log('tamp' + tamp);
+      console.log('apple1' + apple1);
+      console.log('apple2' + apple2);
+
+      tamp = apple1;
+      apple1 = apple2;
+      apple2 = tamp;
+      tamp = '';
+
+      console.log('tamp' + tamp);
+      console.log('apple1' + apple1);
+      console.log('apple2' + apple2);
+    </script>
+  </body>
+</html>

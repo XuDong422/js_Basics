@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        .box {
+            width: 1000px;
+            margin: 100px auto;
+        }
+        
+        .box li {
+            float: left;
+            width: 230px;
+            height: 200px;
+            background-color: white;
+            margin: 10px;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="" alt=""></li>
+            <li><img src="" alt=""></li>
+            <li><img src="" alt=""></li>
+            <li><img src="" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        // 这是我第一次碰到闭包问题，在这个案例上消耗了不少时间
+        // 这个案例的计划是将点击事件循环绑定到imgs上，代码如下：
+        // for (var i = 0; i < imgs.length; i++) {
+        //     imgs[i].onclick = function() {
+        //         document.body.style.backgroundImage = 'url(../images/backGroundImage' + i + '.jpg)';
+        //         console.log(i);
+        //     }
+        // }
+
+        // 当我开始使用时发现打印输出，每次都是输出4，绑定的onclick也指向图片4，
+        // 我反复检查代码，字母没有打错、代码流程也米有错，任何地方都是正常的，但就是存在这个莫名其妙的错误
+        // 尝试不用for循环，把几个事件手打出来，在浏览器实验没有一点问题
+        // 到这里我就彻底蒙了，我不明白为什么会出这种问题，明明for循环没有问题，执行代码没有问题，为什么呢？
+        // 当我多做学习后我了解到这就是作用域问题 ，有两种解决方法 1.闭包解决 2.使用ES6函数的let关键字
+        // 1.闭包解决
+        // for (let i = 0; i < imgs.length; i++) {
+        //     (function(i) {
+        //         imgs[i].onclick = function() {
+        //             document.body.style.backgroundImage = 'url(../images/backGroundImage' + (i + 1) + '.jpg)';
+        //             console.log(i);
+        //         }
+        //     })(i)
+        // }
+        // 2.使用ES6函数的let关键字
+        // for (let i = 0; i < imgs.length; i++) {
+        //     imgs[i].onclick = function() {
+        //         document.body.style.backgroundImage = 'url(../images/backGroundImage' + (i + 1) + '.jpg)';
+        //         console.log(i);
+        //     }
+        // }
+
+        // 由于闭包会导致变量保存在内存中，内存消耗大，所以我选择let关键字
+
+        // 1.获取元素所有的小li
+        var imgs = document.querySelector('.box').querySelectorAll('img');
+        var lis = document.querySelectorAll('li');
+        for (let i = 0; i < imgs.length; i++) {
+            // (function(i) {
+            imgs[i].onclick = function() {
+                    document.body.style.backgroundImage = 'url(../images/backGroundImage' + (i + 1) + '.jpg)';
+                    console.log(i);
+                }
+                // })(i)
+            imgs[i].src = '../images/backGroundImage' + (i + 1) + '.jpg';
+
+        }
+
+        // lis[0].onclick = function() {
+        //     document.body.style.backgroundImage = 'url(../images/backGroundImage' + 1 + '.jpg)';
+        // }
+        // lis[1].onclick = function() {
+        //     document.body.style.backgroundImage = 'url(../images/backGroundImage' + 2 + '.jpg)';
+        // }
+        // lis[2].onclick = function() {
+        //     document.body.style.backgroundImage = 'url(../images/backGroundImage' + 3 + '.jpg)';
+        // }
+        // lis[3].onclick = function() {
+        //     document.body.style.backgroundImage = 'url(../images/backGroundImage' + 4 + '.jpg)';
+        // }
+
+        // for (var j = 0; j < lis.length; j++) {
+        //     lis[j].onclick = function() {
+        //         alert(j)
+        //     }
+
+        // }
+    </script>
+</body>
+
+</html>

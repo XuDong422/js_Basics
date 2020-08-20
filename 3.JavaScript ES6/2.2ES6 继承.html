@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6之前并没有提供extends继承。我们可以通过构造函数+原型对象模拟实现继承,被称为组合继承。
+        // call()
+        // 调用这个函数并且修改函数运行时的this指向
+        // fun. ca11 (thisArg, arg1, arg2，...)
+        // ●thisArg:当前调用函数this的指向对象
+        // ●arg1,arg2 :传递的其他参数
+
+        // 示例
+        function fn() {
+            console.log('XD');
+            console.log(this);
+        }
+        // fn(); 经常使用的方式 
+        fn.call(); // 返回XD this为window
+        // 1.call()可以调用函数
+        var o = {
+            name: 'xd',
+        };
+        fn.call(o); // 返回XD this为call也可以调用函数
+        // 2.call()可以改变这个函数的this指向
+        function fun(x, y) {
+            console.log('XD');
+            console.log(this);
+            console.log(x + y);
+        }
+        fun.call(o, 1, 2); // 返回 {name: "xd"} 3
+
+        // 借用构造函数继承父类型属性
+        // 核心原理:通过call()把父类型的this指向子类型的this , 这样就可以实现子类型继承父类型的属性。
+
+        // 借用父构造函数继承属性
+        // 1.父构造函数
+        // function Father(name, age) {
+        //     // 这里this指的是父构造函数的对象实例
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // // 2.子构造函数
+        // function Son(name, age, score) {
+        //     // 这里this指的是子构造函数的对象实例
+        //     Father.call(this, name, age) // 如果在函数外应该用Son,但是在函数内this已经指向了Son对象实例.
+        //     this.score = score;
+        // }
+        // var son = new Son('许东', 22, 100)
+        // console.log(son);
+
+        // 借用原型对象继承父类型方法
+        function Father(name, age) {
+            // 这里this指的是父构造函数的对象实例
+            this.name = name;
+            this.age = age;
+        }
+        Father.prototype.money = function() {
+            console.log(100000);
+        };
+        // Son.prototype = Father.prototype; // 通过原型继承父元素的prototype,这样会有问题,如果修改了子原型对象,父原型对象也会一起变化
+        Son.prototype = new Father();
+        Son.prototype.exam = function() {
+            console.log('考试');
+        };
+        // 2.子构造函数
+        function Son(name, age, score) {
+            // 这里this指的是子构造函数的对象实例
+            Father.call(this, name, age) // 如果在函数外应该用Son,但是在函数内this已经指向了Son对象实例.
+            this.score = score;
+        }
+        Son.prototype = Father.prototype;
+        var son = new Son('许东', 22, 100)
+        console.log(son);
+        console.log(Father.prototype);
+    </script>
+</body>
+
+</html>

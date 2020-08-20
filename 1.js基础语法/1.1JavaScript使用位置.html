@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>1.1JavaScript使用位置</title>
+    <!--3.链入的js-->
+    <!--3.!链入的script标签不可以写代码-->
+    <script src="js/1.1.js"></script>
+</head>
+
+<body>
+    <p>js使用位置</p>
+    <!--1.行内的js，直接写到元素内部-->
+    <!-- 直接使用onclick使用alert弹出'JavaScript' -->
+    <input type="button" value="许东" onclick="alert('JavaScript')" />
+    <!-- 使用onclick使用 anclick函数 函数中alert弹出文字-->
+    <input type="button" value="许智楠" onclick="anclick()" />
+    <!-- 这个是使用 test这个函数是在js文件中 和在内嵌的js使用方式一样-->
+    <input type="button" value="2233" onclick="test()" />
+
+    <!--2.内嵌的js-->
+    <script>
+        function anclick() {
+            alert('大笨蛋');
+        }
+    </script>
+</body>
+
+</html>

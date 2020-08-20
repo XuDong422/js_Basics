@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Men(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var that;
+        Men.prototype.like = function() {
+            console.log('电脑');
+            that = this;
+        }
+        Men.prototype.num = '32'
+        var xd = new Men('许东', 22);
+        // 1.在构造函数中,里面的this指向的是对象实例 xd
+        xd.like();
+        console.log(that);
+        // 打印
+        // Men {name: "许东", age: 22}
+        // name: "许东"
+        // age: 22
+        // __proto__: Object
+        // 2.原型对象函数里面的this 指的是 实例对象xd
+        console.log(that === xd); // 返回 true
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <p>abc</p>
+    <div class="inner"></div>
+    <div class="create"></div>
+    <script>
+        // 三种动态创建元素区别
+        // 区别1. document.write是直接将内容写入页面的内容流,但是文档流执行完毕,则它会导致页面全部重绘
+        // 2. innerHTML 是将内容写入某个DOM节点,不会导致页面全部重绘
+        // 3. innerHTML 创建多个元素效率更高(不要拼接字符串.采取数组形式拼接), 结构稍微复杂
+        // 4. createElement() 创建多个元索效率稍低一点点, 但是结构更清晰
+        // 总结:不同浏览器下, innerHTMI效率要比creatElement 高
+
+
+        // var btn = document.querySelector('button');
+        // btn.onclick = function() {
+        //     document.write('<div>123</div>');
+        // }
+        // document.write()
+        // 当点击事件发生后整个页面刷新只剩123
+
+        var inner = document.querySelector('.inner');
+        inner.innerHTML = '<a href="#">百度</a>';
+        // element.innerHTML
+
+        var create = document.querySelector('.create');
+        var a = document.createElement('a');
+        create.appendChild(a);
+        // documnent.createElement()
+
+        // 在拼接字符串上两个方法有性能上的差距,两个函数检验,在数组上又不一样;
+        // 检测documnent.createElement
+        // function fn() {
+        //     var d1 = +new Date();
+        //     for (var i = 0; i < 1000; i++) {
+        //         var div = document.createElement('div');
+        //         div.style.width = '100px';
+        //         div.style.height = '2px';
+        //         div.style.border = '1px solid red';
+        //         document.body.appendChild(div);
+        //     }
+        //     var d2 = +new Date();
+        //     console.log(d2 - d1);
+        // }
+        // fn();// 使用6毫秒完成
+        // 检测element.innerHTML
+        // function fn() {
+        //     var d1 = +new Date();
+        //     var str = '';
+        //     for (var i = 0; i < 1000; i++) {
+        //         document.body.innerHTML += '<div style= "width: 100px; height:2px; border:1px solid blue;"></div>';
+        //     }
+        //     var d2 = +new Date();
+        //     console.log(d2 - d1);
+        // }
+        // fn(); // 使用上千毫秒完成
+
+        // 数组检测
+        // 检测element.innerHTML
+        // function fn() {
+        //     var d1 = +new Date();
+        //     var array = [];
+        //     for (var i = 0; i < 1000; i++) {
+        //         array.push('<div style= "width: 100px; height:2px; border:1px solid blue;"></div>');
+        //     }
+        //     document.body.innerHTML = array.join('')
+        //     var d2 = +new Date();
+        //     console.log(d2 - d1);
+        // }
+        // fn(); // 使用一两毫秒完成
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>提交</button>
+    <input type="text" value="请输入内容">
+    <input type="password" value="123456">
+    <button>切换</button>
+
+    <script>
+        // 表单元素的属性操作
+        // 利用DOM可以操作如下表单元索的属性:
+        // type、value、checked. selected. disabled
+
+        // 获取元素
+        var btn = document.querySelectorAll('button')
+        var int = document.querySelectorAll('input')
+            // 处理程序
+        btn[0].onclick = function() {
+            int[0].value = '已提交';
+            // disabled代表禁用整个button按钮
+            this.disabled = true;
+            // this指的是事件函数的调用者
+        }
+
+        // 案例点击按钮将密码框切换为文本框，并且查看密码明文
+        var int2 = int[1]
+        var btn2 = btn[1]
+        var tr = true;
+
+        btn2.onclick = function() {
+            if (tr) {
+                int2.type = 'text'
+                tr = !tr;
+            } else {
+                int2.type = 'password'
+                tr = !tr;
+            }
+        }
+    </script>
+</body>
+
+</html>

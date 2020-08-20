@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 解构赋值
+        // ES6中允许从数组中提取值， 按照对应位置， 对变量赋值。 对象也可以实现解构。
+
+        // 数组解构
+        let [a, b, c] = [1, 2, 3];
+        console.log(a) // 1
+        console.log(b) // 2
+        console.log(c) // 3
+
+        // 对象解构
+        let person = {
+            name: '许东',
+            age: 22
+        };
+        let {
+            name,
+            age
+        } = person;
+        console.log(name); // '许东'
+        console.log(age); // 22
+    </script>
+</body>
+
+</html>

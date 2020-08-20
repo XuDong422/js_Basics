@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        td,
+        th {
+            border: 1px solid #333;
+        }
+        
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // 案例分析
+        // ①因为里面的学生数据都是动态的,我们需要js动态生成。这里我们模拟数据,自己定义好数据。数据我们采取对象形式存储。
+        // ②所有的数据都是放到tbody里面的行里面。
+        // ③因为行很多,我们需要循环创建多个行(对应多少人)
+        // ④每个行里面又有很多单元格(对应里面的数据) ,我们还继续使用循环创建多个单元格，并且把数据存入里面(双重for循环)
+        // ⑤最后一列单元格是删除,需要单独创建单元格。
+
+
+        // 1.先去准备好数据
+        var datas = [{
+            name: 'xxx',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: 'yyy',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: 'zzz',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: 'nnn',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: 'kkk',
+            subject: 'JavaScript',
+            score: 60,
+        }];
+        // 2.往tbody里面创建行:通过数组长度,创建
+        var tbody = document.querySelector('tbody');
+        for (let i = 0; i < datas.length; i++) {
+            // 创建tr行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //行里面创建单元格td单元格的数量取决于每个对象里面的属性个数 for循环遍历对象datas[i]
+            for (const k in datas[i]) {
+                // 创建单元格
+                var td = document.createElement('td');
+                // 把对象里的属性值给 tb
+                // for(var k in obj) {
+                //  k得到的是属性名
+                //  obj[k] 得到是属性值
+                // }
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="JavaScript:;">删除</a>';
+            tr.appendChild(td);
+        }
+        var as = document.querySelectorAll('a');
+        for (let i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+    </script>
+</body>
+
+</html>

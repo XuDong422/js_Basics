@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Hello</p>
+    <script>
+        // 1.获取body 元素
+        var bodys = document.body;
+        console.log(bodys); // 返回body里的所有东西
+        console.dir(bodys); // 返回body所有属性和方法
+        // 1.获取html 元素
+        // var htmls = document.html; 错误写法
+        // console.log(htmls); // 错误写法 返回 undefined
+        var htmls = document.documentElement;
+        console.log(htmls); // 返回 整个html
+    </script>
+</body>
+
+</html>

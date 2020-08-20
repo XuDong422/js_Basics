@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6中的类和对象
+
+        // 面向对象
+        // 面向对象更贴近我们的实际生活,可以使用面向对象描述现实世界事物.但是事物分为具体的事物和抽象的事物
+        // 手机     抽象的(泛指的)
+        // 苹果手机 具体的(特指的)
+
+        //  面向对象的思维特点:
+        // 1.抽取(抽象)对象共用的属性和行为组织(封装)成一个类(模板)
+        // 2.对类进行实例化，获取类的对象
+        // 面向对象编程我们考虑的是有哪些对象,按照面向对象的思维特点不断的创建对象使用对象指挥对象做事情.
+
+        // 对象
+        // 现实生活中:万物皆对象,对象是一个具体的事物 ,看得见摸得看的实物。例如，一本书、一辆汽车、一个人
+        // 可以是“对象”, 一个数据库、一张网页、一个与远程服务器的连接也可以是“对象”。
+        // 在JavaScript中,对象是一组无序的相关属性和方法的集合,所有的事物都是对象,例如字符串、数值、数组、函数等。
+        // 对象是由属性和方法组成的:
+        // ●属性:事物的特征,在对象中用属性来表示(常用名词)
+        // ●方法:事物的行为,在对象中用方法来表示(常用动词)
+
+        // 类class
+        // 在ES6中新增加了类的概念，可以使用class关键字声明一一个类 ,之后以这个类来实例化对象。
+        // 类抽象了对象的公共部分,它泛指某一大类( class )
+        // 对象特指某一个,通过类实例化一个具体的对象
+        // 汽车设计图纸(类)
+        // 一辆真实的汽车(对象的实例)
+
+        // 面向对象的思维特点:
+        // 1.抽取(抽象)对象共用的属性和行为组织(封装)成一个类(模板)
+        // 2.对类进行实例化获取类的对象
+
+        // !!!!!!创建类
+        // 语法:
+        class name {
+            // class body
+        }
+        // 创建实例:
+        var xx = new name();
+        // 注意: 类必须使用new实例化对象
+        console.log(xx);
+        // 返回 name  __proto__: Object
+
+        // 类constructor构造函数
+        // constructor()方法是类的构造函数(默认方法) ,用于传递参数返回实例对象,
+        // 通过new命令生成对象实例时,自动调用该方法。如果没有显示定义类内部会自动给我们创建一个constructor()
+
+        // 1.创建类class 创建一个人类
+        class human {
+            constructor(xname, age, height) {
+                this.xname = xname;
+                this.age = age;
+                this.height = height;
+            }
+        };
+        // 2.利用类创建对象new
+        var xd = new human('许东', 22, 180);
+        console.log(xd); // 打印 human {xname: "许东", age: 22, height: 180}
+        console.log(xd.xname); // 打印 许东
+        var xzn = new human('许智楠', 10, 140);
+        console.log(xzn); // 打印 human {xname: "许智楠", age: 10, height: 140}
+
+        //(1)通过class关键字创建类，类名我们还是习惯性定义首字母大写
+        //(2)类里面有个constructor函数,可以接受传递过来的参数,同时返回实例对象
+        //(3)constructor 函数只要new生成实例时,，就会自动调用这个函数，如果我们不写这个函数,类也会自动生成这个函数
+        //(4)生成实例new不能省略
+        //(5)最后注意语法规范，创建类类名后面不要加小括号，生成实例类名后面加小括号，构造函数不需要加function
+
+        // 类添加方法
+        // 语法:
+        class Person {
+            constructor(xname, age, height) { // constructor 构造器或者构造函数
+                this.xname = xname;
+                this.age = age;
+                this.height = height;
+            }
+            like(like) {
+                console.log(this.xname + '喜欢' + like);
+            }
+        }
+        var xd = new Person('许东', 22, 180);
+        var xzn = new Person('许智楠', 10, 140);
+        xd.like('打游戏'); // 输出许东喜欢打游戏
+        xzn.like('放臭屁'); // 输出许智楠喜欢放臭屁
+        //(1)我们类里面所有的函数不需要写function
+        //(2)多个函数方法之间不需要添加逗号或分号分隔
+
+
+
+        var than;
+        var _than;
+        class Star {
+            constructor(uname, age) {
+                // constructor 里面的this 指向的是创建的实例对象 也就是Star
+                this.uname = uname;
+                this.age = age;
+                this.sing();
+                // this.btn = document.querySelector('button');
+                // this.btn.onclick = this.sing;
+                // btn.click 是错的
+                // this.btn.click 才是类的正确写法
+
+                than = this;
+
+            }
+            sing() {
+                // 这个sing方法里面的this指向的是btn这个按钮，因为这个按钮调用了这个函数
+                console.log(this.uname);
+            }
+            dance() {
+                // 这个dance里面的this指向的是实例对象nnn 因为nnn调用了这个函数
+                _than = this;
+                console.log(this);
+            }
+        }
+        var nnn = new Star('nnn', 18);
+        console.log(than === nnn); // 打印的是true
+        nnn.dance(); //返回 Star {uname: "nnn", age: 18}
+        console.log(_than === nnn); // 打印的是true
+
+        // 四个注意点
+        // 1.在ES6中类没有变量提升,所以必须先定义类,才能通过类实例化对象
+        // 2.类里面的共有的属性和方法一 定要加this使用.
+        // 3.类里面的this指向问题
+        // 4. constructor 里面的this指向实例对象方法里面的this指向这个方法的调用者
+    </script>
+</body>
+
+</html>

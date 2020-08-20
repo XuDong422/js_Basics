@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h5></h5>
+    <script>
+        var params = location.search.substr(7);
+        document.querySelector('h5').innerHTML = '你好' + params;
+        console.log(params);
+    </script>
+</body>
+
+</html>

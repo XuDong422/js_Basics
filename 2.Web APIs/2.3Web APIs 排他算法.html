@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        // 获得所有按钮元素
+        var btns = document.getElementsByTagName('button')
+        var flog = true;
+
+        // btns得到的是伪数组 里面的每一个元素btns[i]
+
+        // 自己的方案
+        // for (var i = 0; i < btns.length; i++) {
+        //     btns[i].onclick = function() {
+        //         if (flog) {
+        //             this.style.backgroundColor = 'plum'
+        //             flog = !flog
+        //             console.log(flog);
+        //             console.log('flog');
+        //         } else {
+        //             this.style.backgroundColor = ''
+        //             flog = !flog
+        //             console.log(flog);
+        //             console.log('og');
+
+        //         }
+
+        //     }
+        // }
+
+        // 其他的方案
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onmouseover = function() {
+                    // (1)把所有按钮的背景颜色去掉
+                    for (let j = 0; j < btns.length; j++) {
+                        btns[j].style.backgroundColor = '';
+                    }
+                    // (2)将现在所选择的按钮背景颜色改为plum
+                    this.style.backgroundColor = 'plum';
+                }
+                // 首先先排除其他人，然后才设置自己的样式这种排除其他人的思想我们成为排他思想
+
+        }
+    </script>
+</body>
+
+</html>

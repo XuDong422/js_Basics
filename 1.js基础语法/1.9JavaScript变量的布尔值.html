@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>1.9JavaScript的布尔值</title>
+  </head>
+
+  <body>
+    <script>
+      var true0 = true; // 如果布尔值参加运算，那true=1
+      var false0 = false; // 如果布尔值参加运算，那false=0
+      console.log(true0); // 输出true
+      console.log(false0); // 输出false
+      console.log(true0 + 1); // 输出2
+      console.log(false0 + 1); // 输出1
+      console.log('------');
+
+      // 如果一个变量没有赋值那么它会输出undefined
+      var ssn;
+      console.log(ssn); // 输出undefined
+      console.log(ssn + '许东'); // 输出undefined许东（undefined这时候是字符串）
+      console.log(ssn + 1); // 输出NaN
+      console.log(true + ssn); // 输出NaN
+      console.log('------');
+
+      // null空值
+      var sser = null;
+      console.log(sser + 'xd'); // 输出nullxd（null这时候是字符串）
+      console.log(sser + 1); // 输出1
+      console.log('------');
+    </script>
+  </body>
+</html>

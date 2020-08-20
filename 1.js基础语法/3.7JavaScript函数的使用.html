@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>3.7JavaScript函数的使用</title>
+</head>
+
+<body>
+    <script>
+        // 函数的概念
+        // 在JS面,可能会定义非常多的相同代码或者功能相似的代码,这些代码可能需要大星重复使用。
+        // 虽然for循环语句也能实现一些简单的重复操作,但是比较具有局限性,此时我们就可以使用JS中的函数。
+        // 函数:就是封装了一段可被重复调用执行的代码块。 通过此代码块可以实现大量代码的重复使用。
+
+        // 函数使用分为两步：声明函数和调用函数
+        // 1.声明函数
+        // function 函数名(形参（形式上的参数）（可传多个使用逗号分隔：（形参1，形参2），也可不传）) {
+        //       函数体
+        // }
+        // 2.调用函数
+        // 函数名（实参（实际上的参数）（必须和函数保持一致，如未设置传参数可以不传））
+
+        // 参数的作用：在函数内部某些值不能固定时，我们可以通过参数在调用函数时传递不同的进去
+        function getSum(num1, num2) {
+            var sum = num1 + num2;
+            console.log(sum);
+        }
+
+        function get(num1, num2) {
+            var sum = 0;
+            for (var i = num1; i <= num2; i++) {
+                sum += i;
+            }
+            console.log(sum);
+        }
+        // 函数就是封装了一段可以被重复使用的代码，目的是可以让代码重复使用
+        getSum(1, 10); // 输出11
+        getSum(10, 50); // 输出60
+        getSum(1, 1000); // 输出1001
+
+        console.log('-------');
+
+        get(1, 10); // 输出55
+        get(10, 50); // 输出1230
+        get(1, 1000); // 输出 500500
+
+        console.log('-------');
+
+        // 函数形参和实参位数匹配问题
+        function ant(num1, num2) {
+            console.log(num1 + num2);
+        }
+        ant(1, 2); // 输出 3
+        ant(1, 2, 3); // 输出 3
+        ant(1); // 输出 NaN
+        // 实参等于形参个数，输出正确结果
+        // 实参多于形参个数，只取形参个数
+        // 实参小于形参个数，多的形参会被定义为undefined
+        // 多余的数据不会被传入，一个参数+undefined=NaN
+        console.log(1 + undefined); //输出NaN
+    </script>
+</body>
+
+</html>

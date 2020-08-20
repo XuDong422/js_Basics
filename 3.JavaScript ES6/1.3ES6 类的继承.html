@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 类的继承
+        // class father {
+        //     constructor() {
+
+        //     }
+        //     money() {
+        //         console.log(100);
+        //     }
+        // };
+        // class son extends father {
+
+        // };
+        // var erzi = new son();
+        // erzi.money(); // 返回 100
+
+        // 继承
+        // 现实中的继承:子承父业,比如我们都继承了父亲的姓。
+        // 程序中的继承:子类可以继承父类的一些属性和方法。
+        class father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+            }
+        };
+        class son extends father {
+            // constructor(x, y) {
+            //         this.x = x;
+            //         this.y = y;
+            //     } // 如果加了这段代码会导致报错 因为这里是子类重新定义xy会和父类冲突.
+            constructor(x, y) {
+                super(x, y); // 调用了父类中的构造函数
+            }
+        };
+        var erzi = new son(1, 2);
+        erzi.sum(); // 返回 3
+    </script>
+</body>
+
+</html>

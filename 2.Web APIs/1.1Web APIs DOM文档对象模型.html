@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="time">2020-8-1</div>
+
+    <ul>
+        <li>1许东</li>
+        <li>2许东</li>
+        <li>3许东</li>
+        <li>4许东</li>
+        <li>5许东</li>
+    </ul>
+    <ul id="xzn">
+        <li>许智楠1</li>
+        <li>许智楠2</li>
+        <li>许智楠3</li>
+        <li>许智楠4</li>
+        <li>许智楠5</li>
+    </ul>
+
+
+    <script>
+        // 什么是DOM
+        // 文档对象模型(Document Object Model ,简称DOM) , 
+        // 是W3C组织推荐的处理可扩展标记语言(HTML或者XML) 的标准编程接口。
+
+        // W3C已经定义了一系列的DOM接口,通过这些DOM接口可以改变网页的内容、结构和样式。
+
+        // DOM 可以划分为一种树型结构 也叫DOM树
+        //                          文档
+        //                           |
+        //                         根元素：<html>
+        //                           |
+        //       |------------------- -------------------|
+        //     元素:                                   元素:
+        //     <head>                                 <body>
+        //       |                              ------|------
+        //       |                             /             \
+        //     元素:            属性:---------元素:           元素:   
+        //    <title>          href          <a>             <h1>
+        //       |                            |               |
+        //     文本:                        文本:            文本:
+        //   "文档链接"                   "我的链接"       "我的标题"
+
+        // 通过这个对象模型，JavaScript 获得创建动态 HTML 的所有力量：
+
+        // JavaScript 能改变页面中的所有 HTML 元素
+        // JavaScript 能改变页面中的所有 HTML 属性
+        // JavaScript 能改变页面中的所有 CSS 样式
+        // JavaScript 能删除已有的 HTML 元素和属性
+        // JavaScript 能添加新的 HTML 元素和属性
+        // JavaScript 能对页面中所有已有的 HTML 事件作出反应
+        // JavaScript 能在页面中创建新的 HTML 事件
+
+        // 文档:一个页面就是一个文档，DOM中使用document表示
+        // 元素:页面中的所有标签都是元素，DOM中使用element表示
+        // 节点:网页中的所有内容都是节点(标签、属性、文本、注释)，DOM中使用node表示
+
+        // DOM把以上内容都看做是对象
+
+
+
+
+        // ！！！获取元素
+
+        // 如何获取页面元素
+        // DOM在我们实际开发中主要用来操作元索。
+        // 我们如何来获取页面中的元素呢?
+        // 获取页面中的元素可以使用以下几种方式:
+        // ●根据ID获取
+        // ●根据标签名获取
+        // ●通过HTML5新增的方法获取
+        // ●特殊元素获取
+
+        // 根据ID获取
+        // 使用getElementByld()方法可以获取带有ID的元素对象
+        // element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.
+        // id是大小写敏感的字符串，代表了所要查找的元素的唯一ID.
+        // 1.因为我们文档页面从上往下加载，所以先得有标签所以我们script写到标签的下面
+        // 2.get获得 element元素 by通过  这些使用驼峰命名法
+        // 3.参数id是大小写敏感的字符串
+        // 4.返回的是一个元素对象
+
+        var ele = document.getElementById('time')
+        var ala = document.getElementById('ti')
+        console.log(ele); // 返回<div id="time">2020-8-1</div>
+        console.log(typeof ele); // 返回 object
+        console.dir(ele); // 显示ele的所有属性和方法
+        console.log(ala); // 返回null
+        // 返回一个匹配到 ID 的 DOM Element 对象。若在当前 Document 下没有找到，则返回 null。
+
+        // 根据标签名获取
+        // 使用getElementsByTagName()方法可以返回带有指定标签名的对象的集合。
+
+        var lis = document.getElementsByTagName('li'); // 获取过来元素对象的集合 以伪数组的新式储存
+        console.log(lis); // 返回 HTMLCollection(5) [li, li, li, li, li]
+        console.log(lis[1]); // 返回 <li>2许东</li>
+        // 如果只有一个ul它就知会获取一个ul的li，有两个就会获取所有的li，解决方法在下面
+
+        for (var i = 0; i < lis.length; i++) {
+            console.log(lis[i]); // 2.将li逐行打印出来
+        }
+
+        // 3.element.getElementsByTagName
+        var xzn0 = document.getElementById('xzn');
+        console.log(xzn0); //返回 带有id的ul元素
+        var xzn1 = xzn0.getElementsByTagName('li');
+        console.log(xzn1);
+
+        // JS获取DOM元素的方法（8种）
+
+        // 通过ID获取（ getElementById）
+        // 通过name属性（ getElementsByName）
+        // 通过标签名（ getElementsByTagName）
+        // 通过类名（ getElementsByClassName）
+        // 通过选择器获取一个元素（ querySelector）
+        // 通过选择器获取一组元素（ querySelectorAll）
+        // 获取html的方法（ document.documentElement）
+        // document.documentElement是专门获取html这个标签的
+        // 获取body的方法（ document.body）
+        // document.body是专门获取body这个标签的。
+    </script>
+</body>
+
+</html>

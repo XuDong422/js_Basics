@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.什么是BOM
+        // BOM (Browser Object Model)即浏览器对象模型,它提供了独立于内容而与浏览器窗口进行交互的对象,其核心对象是window.
+        // BOM由一系列相关的对象构成,并且每个对象都提供了很多方法与属性。
+        // BOM缺乏标准, JavaScript 语法的标准化组织是ECMA , DOM的标准化组织是W3C , BOM最初是Netscape浏览器标准的一部分。
+
+        // DOM文档对象模型
+        // ●DOM就是把[文档」当做一个「对象」来看待
+        // ●DOM 的顶级对象是document
+        // ●DOM 主要学习的是操作页面元索
+        // ●DOM 是W3C标准规范
+
+        // BOM浏览器对象模型
+        // ●把「浏览器」当做一个「对象」来看待
+        // ●BOM的顶级对象是window
+        // ●BOM学习的是浏览器窗口交互的一些对象
+        // ●BOM是浏览器厂商在各自浏览器上定义的，兼容性较差
+
+        // BOM的构成
+        // BOM比DOM更大,它包含DOM。
+
+        //                                   window
+        //                                     |
+        //    +---------------+----------------+----------------+-------------+
+        // document        location        navigation        screen        history
+
+        // window对象是浏览器的顶级对象,它具有双重角色。
+        // 1.它是JS访问浏览器窗口的一一个接口。
+        // 2.它是一一个全局对象。定义在全局作用域中的变量、函数都会变成window对象的属性和方法。
+        // 在调用的时候可以省略window ,前面学习的对话框都属于window对象方法,如alert()、prompt()等。
+        // 注意: 'window'下的一个特殊属性window.name
+
+
+        var num = 10;
+        console.log(num); // 返回 10
+        console.log(window.num); // 返回 10 函数都会变成window对象的属性和方法。
+
+        function fn() {
+            console.log(20);
+        };
+        fn(); // 打印 20
+        window.fn(); // 打印 20
+
+        // alert(30); // 实际上这是简写
+        // window.alert(30); // alert全写
+
+        console.log(window);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .right {
+            color: green;
+        }
+        
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="uname"> <span>请输入用户名</span>
+    <script>
+        //  量词是设定某个模式出现的次数
+        var reg = /^[a-zA-Z0-9_-]{6,16}$/; // 这个模式用户只能输入英文字母 数字 下划线 短横线但是有边界符和[] 这就限定了只能多选1
+        //ctrl shift p 截屏
+        // {6,16}  中间不要有空格
+        // console.log(reg.test('a'));
+        // console.log(reg.test('8'));
+        // console.log(reg.test('18'));
+        // console.log(reg.test('aa'));
+        // console.log('-------------');
+        // console.log(reg.test('andy-red'));
+        // console.log(reg.test('andy_red'));
+        // console.log(reg.test('andy007'));
+        // console.log(reg.test('andy!007'));
+        var uname = document.querySelector('.uname');
+        var span = document.querySelector('span');
+        uname.onblur = function() {
+            if (reg.test(this.value)) {
+                console.log('正确的');
+                span.className = 'right';
+                span.innerHTML = '用户名格式输入正确';
+            } else {
+                console.log('错误的');
+                span.className = 'wrong';
+                span.innerHTML = '用户名格式输入不正确';
+            }
+        }
+    </script>
+    <script>
+        // 什么是正则表达式
+        // 正则表达式( Regular Expression )是用于匹配字符串中字符组合的模式。在JavaScript中,正则表达式也是对象。
+        // 正则表通常被用来检索、替换那些符合某个模式(规则)的文本,例如验证表单:用户名表单只能输入英文字
+        // 母、数字或者下划线，呢称输入框中可以输入中文(匹配)。此外,正则表达式还常用于过滤掉页面内容中的一
+        // 些敏感词(替换) ,或从字符串中获取我们想要的特定部分(提取)等。
+
+        // 正则表达式的特点
+        // 1.灵活性、逻辑性和功能性非常的强。
+        // 2.可以迅速地用极简单的方式达到字符串的复杂控制。
+        // 3.对于刚接触的人来说,比较晦涩难懂。比如: ^\w+(l- +.J\w+)*@\W+(-]\W+)'.W+(-.J\w+)*$
+        // 4.实际开发一般都是直接复 制写好的正则表达式。但是要求会使用正则表达式并且根据实际情况修改正则表达
+        // 式比如用户名: /^[a-z0-9_ -]{3,16}$/
+
+        // 创建正则表达式
+        // 在JavaScript中,可以通过两种方式创建一个正则表达式。
+        // 1.通过调用RegExp对象的构造函数创建
+        // var变量名=new RegExp(/表达式/ ) ;
+
+        // 测试正则表达式test
+        // test(正则对象方法,用于检测字符串是否符合该规则,该对象会返回true或false ,其参数是测试字符串。
+        // regexObj.test (str)
+        // 1. regexObj是写的正则表达式
+        // 2. str我们要测试的文本
+        // 3.就是检测str文本是否符合我们写的正则表达式规范.
+
+        // 正则表达式的组成
+        // 一个正则表达式可以由简单的字符构成,比如/abc/ ,也可以是简单和特殊字符的组合,比如/ab*c/.其中
+        // 特殊字符也被称为元字符,在正则表达式中是具有特殊意义的专用符号,如^、$、+等。
+        // 特殊字符非常多，可以参考:
+        // ●MDN : hts:/develoer.moilla.org/zh-CN/docs/Web/JavaScriptGuide/Regular_Expressions
+        // ●jQuery手册:正则表达式部分
+        // ●正则测试工具: http://tool.oschina.net/regex
+    </script>
+</body>
+
+</html>

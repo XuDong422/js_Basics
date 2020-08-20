@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜数字</title>
+</head>
+
+<body>
+    <script>
+        function get(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+        var ram = get(1, 10);
+        alert(ram);
+        var i = 1;
+        var j = 5;
+        while (i <= j) {
+            var num = Number(prompt('猜数字，1-10，只有5次机会'))
+            if (num > ram) {
+                alert('你猜大了！你还有' + (j - i) + '次机会')
+            } else if (num < ram) {
+                alert('你猜小了！你还有' + (j - i) + '次机会')
+            } else {
+                alert('猜对了')
+                break;
+            }
+            i++
+        }
+    </script>
+</body>
+
+</html>

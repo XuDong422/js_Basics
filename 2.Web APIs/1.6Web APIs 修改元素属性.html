@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="x">x1</div>
+    <div id="y">y2</div>
+    <img src="../images/1.jpg" alt="">
+
+    <img src="../images/1.jpg">
+    <div id="t">好</div>
+    <script>
+        // 修改src
+        // 1.获取元素
+        var x = document.getElementById('x')
+        var y = document.getElementById('y')
+        var m = document.querySelector('img')
+
+        // 2.注册事件 处理程序
+        x.onclick = function() {
+            m.src = '../images/2.jpg';
+            m.title = '2'
+        }
+        y.onclick = function() {
+            m.src = '../images/1.jpg';
+            m.title = '1'
+        }
+
+        // 案例 分时显示不同图片 显示不同问候语
+        // 1.根据系统不同时间来判断,所以需要用到日期内置对象
+        // 2.利用多分支语句来设首不同的图片
+        // 3.需要一个图片,并且根据时间修改图片,要用到操作元素src属性
+        // 4.需要一个div元素，显示不同问候语，修改元素内容即可
+
+        // 1.获取元素
+        var i = document.querySelectorAll('img')
+        var t = document.getElementById('t')
+            // 2.得到当前小时数
+        var date = new Date();
+        var h = date.getHours();
+        // 3.判断小时数改变图片和文字
+        if (h < 12) {
+            i[1].src = '../images/4.jpg';
+            t.innerHTML = '上午好';
+        } else if (h < 18) {
+            i[1].src = '../images/5.jpg';
+            t.innerHTML = '下午好';
+        } else {
+            i[1].src = '../images/6.jpg';
+            t.innerHTML = '晚上好';
+        }
+
+        // 操作元素总结
+        // 操作元素是DOM核心内容
+        //                              /innerText
+        //              |-操作元素内容 <
+        //             |                \innerHTML
+        //            | 
+        //           /-操作常见元素属性 src、href、title、alt等
+        //          /
+        // 操作元素<
+        //          \
+        //           \-操作表单元素 type、value、disability等
+        //            \
+        //             \                    /element.style
+        //              \-操作元素样式属性 <
+        //                                  \clessName
+    </script>
+</body>
+
+</html>

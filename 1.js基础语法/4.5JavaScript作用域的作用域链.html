@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>4.5JavaScript作用域的作用域链</title>
+</head>
+
+<body>
+    <script>
+        // 作用域链
+        // 只要是代码，就至少有一个作用域
+        // 写在函数内部的局部作用域
+        // 如果函数中还有函数,那么在这个作用域中就又可以诞生一个作用域
+        // 根据在内部函数可以访问外部函数变量的这种机制 ,用链式查找决定哪些数据能被内部函数访问,
+        // 就称作作用域链
+
+        var num = 10;
+
+        function fn() {
+            console.log(num); // undefined
+            var num = 20;
+            console.log(num); // 20
+
+            function fun() {
+                console.log(num); // 20
+
+                // var num = 30;// 如果这段代码不注释那么上面的打印是30
+                // console.log(num);
+            }
+            fun();
+        }
+        console.log(num); //10
+        fn();
+
+        // 上面的代码返回
+        // 10
+        // 20
+        // 20
+
+        // 作用域链：内部访问外部函数的变量，采用的是链式查找的方式来决定取那个值，这种结构称为作用域链
+        // 作用域链遵循就近原则
+    </script>
+</body>
+
+</html>

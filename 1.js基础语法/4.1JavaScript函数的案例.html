@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>4.1JavaScript函数的案例</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5, 6];
+        var rra = [];
+
+        function arrt(num) {
+            console.log(num);
+            for (var i = 0; i <= num.length - 1; i++) {
+                // console.log(num[i]);
+                rra[num.length - i - 1] = num[i];
+            }
+            return rra;
+        }
+        console.log(arrt(arr));
+        console.log(arrt([8, 2, 4, 5, 4, 5, 2]));
+
+        console.log('------');
+
+        function sort(aum) {
+            for (i = 0; i < aum.length; i++) {
+                for (j = 0; j < aum.length - i; j++) {
+                    if (aum[j] > aum[j + 1]) {
+                        var temp = aum[j];
+                        aum[j] = aum[j + 1];
+                        aum[j + 1] = temp;
+                    }
+                }
+            }
+            return aum;
+        }
+        console.log(sort([6, 5, 4, 3, 2, 1]));
+        console.log(sort([5, 2, 4, 5, 1]));
+
+        console.log('------');
+
+        function runa(num) {
+            if ((num % 4 == 0 && num % 100 !== 0) || num % 400 == 0) {
+                return '是闰年';
+            } else {
+                return '是平年';
+            }
+            // var fla = false;
+            // if ((num % 4 == 0 && num % 100 !== 0) || num % 400 == 0) {
+            //     fla = true;
+            // }
+            // return fla;
+        }
+        console.log(runa(2008));
+        console.log(runa(2000));
+        console.log(runa(1900));
+        console.log(runa(1896));
+    </script>
+</body>
+
+</html>

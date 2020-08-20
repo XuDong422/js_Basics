@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>4.2JavaScript函数的互相调用</title>
+</head>
+
+<body>
+    <script>
+        function fn1() {
+            return 25;
+            // console.log(1);
+        }
+
+        function fn2() {
+            return 25;
+            // console.log(2);
+        }
+
+        // fn1();
+        // fn2();
+
+        function fn3() {
+            console.log(fn1() + fn2());
+            // fn1();
+            // fn2();
+        }
+        fn3();
+
+        console.log('------');
+
+        function runa(num) {
+            var fla = false;
+            if ((num % 4 == 0 && num % 100 !== 0) || num % 400 == 0) {
+                fla = true;
+            }
+            return fla;
+        }
+
+        function kan() {
+            var yea = prompt('请输入年份');
+            var year = Number(yea);
+            if (runa(year)) {
+                alert('是29天');
+            } else {
+                alert('是28天');
+            }
+        }
+        kan();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        window.onload = function() {
+            var btn = document.querySelector(' button');
+            btn.addEventListener('click', function() {
+                alert('点击');
+            })
+        };
+        window.addEventListener('load', function() {
+            alert(20)
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            alert(30)
+        }); // 仅DOM加载完成就将这个函数执行
+
+        // load等页面内容全部加载完毕，包含页面dom元素图片flashcss等等
+        // DOMContentLoaded 是DOM加载完毕，不包含图片falsh css等就可以执行 加载速度会比load更快一点
+    </script>
+    <button>点击</button>
+    <!-- 正常的情况下要执行的js代码在html代码上方没办法使用 -->
+    <div>123</div>
+    <script>
+        // window常见事件
+        // window窗口加载事件
+
+        // window.onload是窗口(页面)加载事件,当文档内容完全加载完成会触发该事件(包括图像脚本文件、CSS文件等),就调用的处理函数。
+        // 注意:
+        // 1.有了window.onload就可以把JS代码写到页面元素的上方,因为onload是等页面内容全部加载完毕，再去执行处理函数 。
+        // 2. window.onload传统注册事件方式只能写一次,如果有多个,会以最后一个window.onload为准。
+        // 3.如果使用addEventLi stener则没有限制
+
+        // DOMContentL oaded事件触发时，仅当DOM加载完成，不包括样式表,图片, flash等等。
+        // le9以上才支持
+        // 如果页面的图片很多的话，从用户访问到onload触发可能需要较长的时间交互效果就不能实现,必然影响用户的体验,此时用DOMContentl oaded事件比较合适。
+
+        // 调整窗口大小事件
+        window.addEventListener('resize', function() {
+            console.log(window.innerWidth);
+            if (window.innerWidth <= 1000) {
+                document.querySelector('div').style.display = 'none';
+            } else if (window.innerWidth >= 1000) {
+                document.querySelector('div').style.display = 'block';
+            }
+            // console.log('大小调整'); // 宽高调整都会触发
+        });
+        // window. onreaize是调整窗口大小加载事件,当触发时就调用的处理函数。
+        // 注意:
+        // 1.只要窗口大小发生像素变化,就会触发这个事件。
+        // 2.我们经常利用这个事件完成响应式布局。window.innerWidth 当前屏幕的宽度
+    </script>
+
+</body>
+
+</html>

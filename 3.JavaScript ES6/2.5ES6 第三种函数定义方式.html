@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数的定义方式
+        // 1.函数声明方式function关键字(命名函数)
+        // 2.函数表达式(匿名函数)
+        // 3.new Function()
+
+        // ●Function 里面参数都必须是字符串格式
+        // ●第三种方式执行效率低,也不方便书写,因此较少使用
+        // ●所有函数都是Function的实例(对象)
+        // ●函数也属于对象
+
+        var fn = new Function('a', 'b', 'console.log(a+b)');
+        fn(1, 2); // 返回 3
+        // 所有函数都是function的实例(对象);
+        console.dir(fn); // 返回的带有__proto__所以是对象
+        console.log(fn instanceof Object); // 返回true
+    </script>
+</body>
+
+</html>

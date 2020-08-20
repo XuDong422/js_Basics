@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="dome" index="1" class="nav"></div>
+    <script>
+        // 获取元素的属性值
+        var div = document.querySelector('div');
+        // 1.element.属性
+        console.log(div.id); // 返回dome
+        // 2.element.getAttribute('属性') get得到获取attribute属性
+        console.log(div.getAttribute('id')); // 返回dome
+        console.log(div.getAttribute('index')); // 返回1
+
+        // 区别:
+        // ●element .属性获取内置属性值(元素本身自带的属性)
+        // ●element .getAttribute(属性');主要获得自定义的属性 (标准)自定义的属性
+
+        // 设置元素的属性值
+        // -->getAttribute：取得属性；
+        // -->setAttribute：设置属性；
+        // 1.element.属性 = '值'
+        div.id = 'da';
+        console.log(div.getAttribute('id')); // 返回da
+        // 源代码也改为da
+        // 2.element.setAttribute('属性','值');
+        console.log(div.setAttribute('index', 3)); // 打印undefined
+        // 源代码改为2
+        div.setAttribute('class', 'footer');
+        console.log(div.class); // 打印undefined
+        console.log(div.getAttribute('class')); //footer
+        // 代码有修改
+
+        // 移除属性 removeAttribute(属性)
+        // div.removeAttribute('index');
+    </script>
+</body>
+
+</html>

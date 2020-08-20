@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: mediumspringgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector('.box');
+        box.addEventListener('mousemove', function(e) {
+            // console.log(e.pageX); // 打印点击位置距离窗口X轴距离的数据
+            // console.log(e.pageY); // 打印点击位置距离窗口y轴距离的数据
+            // console.log(box.offsetLeft); // 打印盒子距离左侧窗口的距离
+            // console.log(box.offsetTop); // 打印盒子距离窗口上部的距离
+
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            this.innerHTML = 'x坐标是' + x + 'y坐标是' + y
+        });
+    </script>
+</body>
+
+</html>

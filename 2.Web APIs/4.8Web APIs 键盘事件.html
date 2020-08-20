@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 常用键盘事件
+        // 事件除了使用鼠标触发,还可以使用键盘触发。
+        // 键盘事件            触发条件
+        // onkeyup             某个键盘按键被松开时触发
+        // onkeydown           某个键盘按键被按下时触发
+        // onkeypress          某个键盘按键被按下时触发但是它不识别功能键 比如ctrl shift箭头等
+
+        //1. keyup 按键弹起的时候触发
+        // document.onkeyup = function() {
+        //     console.log('弹起onkeyup');
+        // };
+        // 使用addEventListener keyup不需要加on
+        // document.addEventListener('keyup', function() {
+        //     console.log('弹keyup');
+        // });
+        //2. keydown 按键按下的时候触发
+        // document.onkeydown = function() {
+        //     console.log('按下onkeydown');
+        // };
+        // document.addEventListener('keydown', function() {
+        //     console.log('按keydown');
+        // });
+        //3. keypress 按键按下的时候触发
+        // document.onkeypress = function() {
+        //     console.log('按下onkeypress');
+        // };
+        // document.addEventListener('keypress', function() {
+        //     console.log('按keypress');
+        // });
+        // 当按ctrl shift箭头等 keypress不被触发
+        // keydown和keypress不管代码上谁先后,显示的时候都是keydown先
+        // 注意:
+        // 1.如果使用addEventListener不需要加on
+        // 2. onkeypress和前面2个的区别是,它不识别功能键,比如左右箭头, shift等。
+        // 3.三个事件的执行顺序是: keydown -- keypress --- keyup
+
+        // 键盘事件对象
+        document.addEventListener('keypress', function(e) {
+            console.log(e.key);
+            console.log(e.key + '的ASCII码值是' + e.keyCode);
+            // 1.keyup 和keydown事件不区分字母大小写 a和A得到的都是65
+            // 2.keypress 事件 区分大小写 a的ASCII码值是97 A的ASCII码值是65
+            if (e.keyCode === 65) {
+                alert('按下的是a')
+            }
+
+        });
+        // 键盘事件对象属性                 说明
+        // keyCode             返回该键的ASCII值
+        // 注意: onkeydown和 onkeyup不区分字母大小写, onkeypress区分字母大小写。
+        // 在实际开发中， 我们更多的使用keydown和keyup, 它能识别所有的键(包括功能键)
+        // Keypress不识别功能键, 但是keyCode属性能区分大小写, 返回不同的ASCII值
+    </script>
+</body>
+
+</html>

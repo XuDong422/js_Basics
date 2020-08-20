@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>2.8JavaScript的for循环</title>
+  </head>
+
+  <body>
+    <script>
+      // js中的循环
+      // 在js中，主要有三种类型的循环语句：
+      // *for循环
+      // *while循环
+      // *do...while
+
+      // 1.for重复执行某些代码，通常跟计数有关系
+      // 2.for循环的语法结构
+      // for (初始化变量;条件表达式;操作表达式) {
+      //    // 循环体
+      // }
+      // 3.1初始化变量 就是用var声明的一个普通变量，通常用于作为计数器使用
+      // 3.2条件表达式 就是用来决定每一次的循环是否继续执行，还是终止
+      // 3.3操作表达式 是每次循环最后执行的代码，经常用于计数器变量更新（递增或者递减）
+
+      // 循环的目的:可以重复执行某些代码
+      for (var i = 1; i <= 100; i++) {
+        console.log('------');
+      }
+      // 执行顺序
+      // 1.i=1
+      // 2.i <= 100、
+      // 3.执行循环体
+      // 4.i++
+
+      // var num = prompt('请输入循环次数');
+      // for (var i = 1; i <= num; i++) {
+      //     console.log('循环：' + num);
+      // }
+
+      // for (var i = 1; i <= 100; i++) {
+      //     if (i == 1) {
+      //         console.log('这个人出生，他1岁！');
+      //     } else if (i == 100) {
+      //         console.log('这个人离开，他100岁！');
+      //     } else {
+      //         console.log('这个人他' + i + '岁了！');
+      //     }
+      // }
+
+      //   var sum = 0;
+      //   for (var i = 1; i <= 100; i++) {
+      //     sum = sum + i;
+      //     console.log(sum);
+      //   }
+
+      //   var jisu = 0;
+      //   var ousu = 0;
+      //   for (var i = 1; i <= 100; i++) {
+      //     if (i % 2 == 0) {
+      //       ousu = ousu + i;
+      //       console.log(ousu);
+      //     } else {
+      //       jisu = jisu + i;
+      //       console.log(jisu);
+      //     }
+      //   }
+
+      // 双重for循环
+
+      var str1 = '';
+      for (var i = 1; i <= 10; i++) {
+        for (var j = i; j <= 10; j++) {
+          str1 = str1 + '⭐';
+        }
+        str1 += '\n';
+      }
+      console.log(str1);
+
+      var str2 = '';
+      for (var i = 1; i <= 10; i++) {
+        for (var j = 1; j <= i; j++) {
+          str2 = str2 + '⭐';
+        }
+        str2 += '\n';
+      }
+      console.log(str2);
+    </script>
+  </body>
+</html>

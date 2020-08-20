@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.2JavaScript的循环关键字</title>
+</head>
+
+<body>
+    <script>
+        continue;
+        可以跳出当前循环;
+        break;
+        可以跳出整个循环;
+        for (var i = 1; i <= 5; i++) {
+            if (i == 3) {
+                continue;
+            }
+            console.log('这是' + i);
+        }
+        // 输出
+        // 这是1
+        // 这是2
+        // 这是4
+        // 这是5
+
+        var sun = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                continue;
+            }
+            sun += i;
+        }
+        console.log(sun);
+        // 输出4315
+
+        for (var i = 1; i <= 5; i++) {
+            if (i == 3) {
+                break;
+            }
+            console.log('这是' + i);
+        }
+        // 输出     这是1 这是2
+    </script>
+</body>
+
+</html>

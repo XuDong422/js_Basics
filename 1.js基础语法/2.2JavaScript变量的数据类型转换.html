@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>2.2JavaScript的数据类型转换</title>
+</head>
+
+<body>
+    <script>
+        // 转换为字符串
+        // 使用toString()转换为字符串
+        var num = 10;
+        console.log(num);
+        var str = num.toString();
+        console.log(str); // 输出字符串10
+        console.log(typeof str); // 输出字符串类型
+
+        // 使用String()强制转换为字符串
+        console.log(String(num)); // 输出字符串10
+
+        // 拼接字符会转化为字符串 这就是隐式转换
+        console.log(num + '10'); // 输出字符串1010
+
+        console.log('------');
+
+        // 转换为数字类型的
+        // 使用parseInt()函数，转换成整数
+        // 这个函数它只截取从第一位开始的数字到下一位的非数字，
+        // 不接收小数点 如果第一位就是非数字则放弃截取
+        var anr = '3.145';
+        var agr = '3.94';
+        console.log(parseInt(anr)); // 输出数字3
+        console.log(parseInt(agr)); // 输出数字3
+        console.log(parseInt('120px123')); // 输出数字120
+        console.log(parseInt('rem120px')); // 输出NaN
+        // 使用parseFloat()函数，转换为浮点数
+        console.log(parseFloat(anr)); // 输出数字3.145
+        console.log(parseFloat(agr)); // 输出数字3.94
+        console.log(parseFloat('120px')); // 输出数字120
+        console.log(parseFloat('rem120px')); // 输出NaN
+        // Number()强制转换
+        console.log(Number(anr));
+        console.log(Number('120px')); // NaN
+        console.log(Number('rem120px')); // NaN
+        // js隐式转换 利用- * /
+        console.log(anr - 0); // 输出数字3.145
+        console.log(anr * 1); // 输出数字3.145
+        console.log(anr / 1); // 输出数字3.145
+        console.log(anr - anr); // 输出数字0
+        console.log('------');
+
+        // 转化为布尔型
+        // 代表空和否定的值会被转化为false，如0、null、undefined其他值都是true
+        console.log(Boolean('')); // 输出false
+        console.log(Boolean(0)); // 输出false
+        console.log(Boolean(null)); // 输出false
+        console.log(Boolean(NaN)); // 输出false
+        console.log(Boolean(undefined)); // 输出false
+        console.log(Boolean('许东')); // 输出true
+        console.log(Boolean(12)); // 输出true
+    </script>
+</body>
+
+</html>

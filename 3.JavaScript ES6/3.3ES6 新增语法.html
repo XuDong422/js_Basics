@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let
+        // ES6中新增的用于声明变量的关键字。
+        // ●let声明的变量只在所处于的块级有效
+        let a = 10;
+        console.log(a); // 10
+        // let关键字就是用来声明变量的
+        // 使用let关键字声明的变量具有块级作用域
+        // if (true) {
+        //     let b = 20;
+        //     console.log(b); // 20
+        // }
+        // console.log(b); // 报错
+
+        // 注意:使用let关键字声明的变量才具有块级作用域，使用var声明的变量不具备块级作用域特性。
+        // for循环使用let防止变量成为全局变量。
+
+        // ●不存在变量提升
+        // console.log(a); // 报错
+        // let c = 20;
+        // ●暂时性死区
+        // var tmp = 123;
+        // console.log(tmp); // 123
+        // if (true) {
+        //     tmp = 'abc';
+        //     let tmp;
+        //     // console.log(tmp); // 报错
+        // }
+        // // console.log(tmp); // 报错
+
+
+        // const
+        // 作用:声明常量，常量就是值(内存地址)不能变化的量，
+        // ●具有块级作用域
+        // if (true) {
+        //     const a = 10;
+        // }
+        // console.log(a); // 报错
+        // ●声明常量时必须赋值
+        // const ti; // 报错 Missing initializer in const declaration
+        // ●常量赋值后，值不能修改。
+        // const PI = 3.14;
+        // PI = 100; // 报错 Assignment to constant variable.
+
+
+        // let、const. var 的区别
+        // 1.使用var声明的变量，其作用域为该语句所在的函数内，且存在变量提升现象。
+        // 2.使用let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升。
+        // 3.使用const声明的是常量，在后面出现的代码中不能再修改该常量的值。
+        // var             let             const
+        // 函数级作用域     块级作用域      块级作用域
+        // 变量提升        不存在变量提升   不存在变量提升
+        // 值可更改        值可更改        值不可更改
+    </script>
+</body>
+
+</html>

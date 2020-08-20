@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+        <p>xd</p>
+    </div>
+    <script>
+        // 常用的鼠标事件
+        // 鼠标事件            触发条件
+        // onclick      click             鼠标点击左键触发
+        // onmouseover  mouseover         鼠标经过触发
+        // onmouseout   mouseout          鼠标离开触发
+        // onfocus      focus             获得鼠标焦点触发
+        // onblur       blur              失去鼠标焦点触发
+        // onmousemove  mousemove         鼠标移动触发
+        // onmouseup    mouseup           鼠标弹起触发
+        // onmousedown  mousedown         鼠标按下触发
+
+        // 1.禁止鼠标右键菜单
+        // contextmenu主要控制应该何时显示上下文菜单,主要用于取消默认的上下文菜单
+        var p = document.querySelector('p');
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }); // 禁用鼠标右键
+
+        // 2.禁止鼠标选中
+        // selectstart主要控制应该何时显示上下文菜单,主要用于取消默认的上下文菜单
+        var p = document.querySelector('p');
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        }); // 禁用选中文字
+
+        //  鼠标事件对象
+        // event对象代表事件的状态,跟事件相关的一系列信息的集合。现阶段我们主要是用鼠标事件对象
+        // MouseEvent和键盘事件对象KeyboardEvent.
+        // 鼠标事件对象                说明
+        // e.clientX                   返回鼠标相对于浏览器窗口可视区的X坐标
+        // e.clientY                   返回鼠标相对于浏览器窗口可视区的Y坐标
+        // e.pageX                     返回鼠标相对于文档页面的X坐标IE9+ 支持
+        // e.pageYL                    返回鼠标相对于文档页面的Y 坐标1E9+支持
+        // e.screenX                   返回鼠标相对于电脑屏幕的X坐标
+        // e.screenY                   返回鼠标相对于电脑屏幕的Y坐标
+
+        // 鼠标事件对象MouseEvent
+        document.addEventListener('click', function(e) {
+            // 1.client 鼠标在可视区的x和y坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            // 2.page 鼠标在文档的x和y坐标
+            console.log(e.pageX);
+            console.log(e.pageY);
+            // 3.screen 鼠标在屏幕的xy坐标
+            console.log(e.screenX);
+            console.log(e.screenY);
+        })
+    </script>
+</body>
+
+</html>

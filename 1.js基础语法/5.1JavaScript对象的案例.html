@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var cputer = {}
+        cputer.color = 'white';
+        cputer.kg = '9kg';
+        cputer.dell = 'dell';
+        cputer.xh = 'c2000';
+        cputer.zuoyou = '工作';
+        console.log(cputer);
+
+        var car = {}
+        car.kg = '1000kg';
+        car.color = 'white';
+        car.dell = 'jili';
+        console.log(car);
+
+        function fz(num) {
+            var temp = []
+            for (var i = 0; i < num.length; i++) {
+                temp[i] = num[num.length - i - 1]
+            }
+            console.log(temp);
+        }
+        fz([6, 5, 4, 3, 2, 1]);
+        fz([1, 2, 3, 4, 5, 6]);
+
+        console.log('------');
+
+        // for (var i = 0; i <= arr.length - 1; i++) {
+        //     // 外层循环管躺数
+        //     for (var j = 0; j <= arr.length - i - 1; j++) {
+        //         // 里面的循环 每一趟的交换次数
+        //         if (arr[j] > arr[j + 1]) {
+        //             var temp = arr[j];
+        //             arr[j] = arr[j + 1];
+        //             arr[j + 1] = temp;
+        //         }
+        //     }
+        // }
+        // console.log(arr);
+
+        var arr = [3, 4, 1, 2, 5];
+
+        function arra(num) {
+            for (var i = 0; i < num.length - 1; i++) {
+                for (var j = 0; j < num.length - i - 1; j++) {
+                    if (num[j] > num[j + 1]) {
+                        var temp = num[j];
+                        num[j] = num[j + 1];
+                        num[j + 1] = temp;
+                    }
+                }
+            }
+            return num
+
+        }
+        console.log(arra(arr));
+        console.log(arra([8, 2, 4, 4, 5, 5, 1, 1, 4]));
+
+        // 简易计算器
+        var tishi = prompt('欢迎使用简易计算器：\n 1.加法计算器：\n 2.减法计算器：\n 3.乘法计算器：\n 4.除法计算器：\n 5.退出：\n请输入您的选项')
+        console.log(typeof tishi);
+        switch (tishi) {
+            case '1':
+                jiafa();
+                break;
+            case '2':
+                jianfa();
+                break;
+            case '3':
+                chengfa();
+                break;
+            case '4':
+                chufa();
+                break;
+            case '5':
+                alert('已退出');
+                break;
+
+            default:
+                alert('输入错误');
+                break;
+        }
+
+        function shuju(num1) {
+            var num = [];
+            for (var i = 1; i <= num1; i++) {
+                num[i - 1] = Number(prompt('请输入第' + i + '个数字'))
+            }
+            return num;
+        }
+
+        // function jisuan(num1, jia) {
+        //     for (var i = 0; i < num1.length; i++) {
+        //         alert(num1[i])
+        //     }
+        //     return num1
+        // }
+
+        function jiafa() {
+            var jia = 3
+            var n = shuju(3)
+            var j = n[0] + n[1] + n[2]
+                // var j = jisuan(n, jia)
+            alert(j)
+        }
+
+        function jianfa() {
+            var n = shuju(2)
+            var j = n[0] - n[1]
+            alert(j)
+        }
+
+        function chengfa() {
+            var n = shuju(2)
+            var j = n[0] * n[1]
+            alert(j)
+        }
+
+        function chufa() {
+            var n = shuju(2)
+            var j = n[0] / n[1]
+            alert(j)
+        }
+    </script>
+</body>
+
+</html>

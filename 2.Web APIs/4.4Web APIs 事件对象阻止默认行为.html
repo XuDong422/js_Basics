@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>123</div>
+    <a href="www.baidu.com">百度</a>
+    <form action="www.baidu.com">
+        <input type="submit" value="提交" name="sub">
+    </form>
+    <script>
+        // e.type                          返回事件的类型比如click mouseover不带on
+        // e.preventDefault()              该方法阻止默认事件(默认行为)标准比如不让链接跳转
+        // e.returnValue                   该属性阻止默认事件(默认行为)非标准ie6-8使用比如不让链接跳转
+
+        //常见事件对象的属性和方法
+        // 1.返回事件类型
+        var div = document.querySelector('div');
+        div.addEventListener('click', fn);
+        div.addEventListener('mouseover', fn);
+        div.addEventListener('mouseout', fn);
+
+        function fn(e) {
+            console.log(e.type);
+        };
+        // 当鼠标有进入离开点击行为时打印这些
+
+        var a = document.querySelector('a');
+        a.addEventListener('click', function(e) {
+            e.preventDefault(); // dom 标准写法
+        });
+        // 传统的注册方法
+        a.onclick = function(e) {
+            // 普通浏览器 e.preventDefault(); //是方法
+            e.preventDefault();
+            // 低版本浏览器 ie678  // 是属性
+            // e.returnValue;
+            //我们可以利用return false 也能阻止默认行为没有兼容性问题 这种方法之限于传统注册方式
+            return false;
+        }
+    </script>
+</body>
+
+</html>

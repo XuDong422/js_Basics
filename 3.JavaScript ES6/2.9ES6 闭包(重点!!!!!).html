@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+
+
+    <script>
+        // 闭包
+        // 变量作用域
+        // 变量根据作用域的不同分为两种:全局变量和局部变量。
+        // 1.函数内部可以使用全局变量。
+        // 2.函数外部不可以使用局部变量。
+        // 3.当函数执行完毕,本作用域内的局部变量会销毁。
+
+        // 什么是闭包
+        // 闭包( closure )指有权访问另一个函数作用域中变量的函数。----- JavaScript 高级程序设计
+        // 简单理解就是, 一个作用域可以访问另外一 个函数内部的局部变量。
+    </script>
+    <script>
+        //当内部函数访问到外部变量，并保存到外部，机会形成闭包,闭包会不停地保存变量，不会被销毁
+        var arr = [1, 2, 3, 4, 5]
+        for (var i = 0; i < 5; i++) {
+            arr[i] = function() {
+                console.log(i);
+            }
+        }
+        arr[1]();
+        arr[0]();
+
+
+        var btn = document.querySelector('button');
+
+        //闭包中的变量会一直发生改变,保存变量，不会被销毁,内部函数访问外部变量
+        function fx() {
+            var a = 10;
+            return function() {
+                a++;
+                console.log(a);
+
+            }
+        };
+        var f = fx(); //fx()返回一个函数体
+        btn.onclick = f;
+
+
+
+
+        function fun(n, x) {
+            console.log(x);
+
+            return {
+                fun: function(m) {
+                    return fun(m, n);
+                }
+            };
+        };
+        //undefined ,0,1,2
+        var b = fun(0).fun(1).fun(2).fun(3);
+        //fun(0): n=0,x=undefined
+        //fun(0).fun(1) :m=1, n=m=1, x=n=0
+        //fun(0).fun(1).fun(2): n=m=2,x=n=1
+        //fun(0).fun(1).fun(2).fun(3): m=3,x=n=2
+
+
+
+        var c = fun(0).fun(1); //undefined 0
+        c.fun(2); //1
+        c.fun(3); //1
+
+
+        var a = fun(0); //调用第一层fun，x只声明没有赋值undefined , n=0
+        a.fun(1); //调用第二层fun，形成闭包，会保存变量 n，m=1,n=0,再把 n 传给 x 0
+        a.fun(2); //m=2,n= 0
+        a.fun(3); //m=3,n= 0
+
+
+
+
+
+
+        var person = {
+            name: "double",
+            getName: function() {
+
+                return function() {
+                    console.log(this); //window
+                    console.log(this.name) //访问外部变量才会产生闭包
+                }
+            }
+        }
+        var name = "single"
+        person.getName()(); //single  
+        //             没有产生闭包，相当于在外面调用
+        //          function() {    
+        //             console.log(this.name)
+        //            };
+
+
+
+
+
+
+        (function(x) {
+            return (function(y) {
+                console.log(x);
+            })(2)
+        })(1);
+
+
+
+
+        function module() {
+            var arr = [];
+
+            function add(val) {
+                if (typeof val == 'number') {
+                    arr.push(val);
+                }
+            }
+
+            function get(index) {
+                if (index < arr.length) {
+                    return arr[index]
+                } else {
+                    return null;
+                }
+            }
+            return {
+                add: add,
+                get: get
+            }
+        }
+        var mod1 = module();
+        mod1.add(1);
+        mod1.add(2);
+        mod1.add('xxx'); //arr [1,2]
+        console.log(mod1.get(2));
+    </script>
+</body>
+
+</html>

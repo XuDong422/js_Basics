@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="fn()">许东</button>
+    <button id="btn">许智楠</button>
+
+    <div>123</div>
+
+    <button id="mus">鼠标事件</button>
+    <script>
+        // 事件概述
+        // JavaScript使我们有能力创建动态页面,而事件是可以被JavaScript侦测到的行为。
+        // 简单理解:触发--- 响应机制。
+
+        // 网页中的每个元素都可以产生某些可以触发JavaScript的事件,
+        // 例如,我们可以在用户点击某按钮时产生一个事件,然后去执行某些操作。
+
+        //点击一个按钮，弹出对话框
+        // 1.事件是有三部分组成 事件源事件类型 事件处理程序 我们也称为事件三要素
+        //(1) 事件源事件被触发的对象 谁 按钮
+        //(2) 事件类型 如何触发 什么事件比如鼠标点击(onclick)还是鼠标经过还是键盘按下
+        //(3) 事件处理程序 通过个函数赋值的方式 完成
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            alert('许智楠');
+            console.log('许智楠');
+        }
+
+        // 执行事件的步骤
+        // 1.获取事件源
+        // 2.注册事件(绑定事件)
+        // 3.添加事件处理程序(采取函数赋值形式)
+        var divk = document.querySelector('div');
+        divk.onclick = function() {
+            alert('123');
+            console.log('123');
+        }
+
+        // 常见的鼠标事件
+        // 鼠标事件                触发条件
+        // onclick                 鼠标点击左键触发
+        // onmouseover             鼠标经过触发
+        // onmouseout              鼠标离开触发
+        // onfocus                 获得鼠标焦点触发
+        // onblur                  失去鼠标焦点触发
+        // onmousemove             鼠标移动触发
+        // onmouseup               鼠标弹起触发
+        // onmousedown             鼠标按下触发
+        var mus = document.getElementById('mus');
+        mus.onclick = function() {
+            console.log('onclick点击事件');
+        }
+        mus.onmouseover = function() {
+            console.log('onmouseover鼠标经过事件');
+        }
+        mus.onmouseout = function() {
+            console.log('onmouseout鼠标离开事件');
+        }
+        mus.onfocus = function() {
+            console.log('onfocus获得鼠标焦点事件');
+        }
+        mus.onblur = function() {
+            console.log('onblur失去鼠标焦点事件');
+        }
+        mus.onmousemove = function() {
+            console.log('onmousemove鼠标移动事件');
+        }
+        mus.onmouseup = function() {
+            console.log('onmouseup鼠标弹起事件');
+        }
+        mus.onmousedown = function() {
+            console.log('onmousedown鼠标按下事件');
+        }
+
+
+
+        function fn() {
+            alert('许东');
+            console.log('许东');
+        }
+    </script>
+</body>
+
+</html>

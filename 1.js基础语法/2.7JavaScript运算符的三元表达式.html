@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.7JavaScript的三元表达式</title>
+  </head>
+
+  <body>
+    <script>
+      // 只有一个变量参与运算叫一元运算符 比如++num --num ！num
+      // 有两个变量参与就叫二元运算符，加减乘除就叫二元运算符
+      // 条件运算符也叫做三元运算符
+
+      // 有三元运算符组成的式子我们称为三元表达式
+      // 语法结构         条件表达式 ? 表达式1 : 表达式2
+      // 如果表达式结果为true则返回表达式1的值,如果为false则返回条件表达式2的值
+
+      // 例子
+      var num = 10;
+      var abc = num > 5 ? '是的' : '不是的';
+      console.log(abc);
+
+      // 例子
+      var asd = prompt('输入一个0-99的数字');
+      console.log(typeof asd);
+      var rfv = asd < 10 ? '0' + asd : asd;
+      console.log(rfv);
+    </script>
+  </body>
+</html>

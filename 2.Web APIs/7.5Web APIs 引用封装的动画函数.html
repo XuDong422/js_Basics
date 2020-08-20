@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+    <script src="js/scrollt.js"></script>
+    <script>
+        var sliderbar = document.querySelector('.sliderbar');
+        var con = document.querySelector('.con');
+
+        sliderbar.addEventListener('mouseenter', function() {
+            scrollt(con, -160, function() {
+                document.querySelector('span').innerHTML = '→';
+            });
+        });
+        sliderbar.addEventListener('mouseleave', function() {
+            scrollt(con, 0, function() {
+                document.querySelector('span').innerHTML = '←';
+            });
+        });
+    </script>
+</body>
+
+</html>

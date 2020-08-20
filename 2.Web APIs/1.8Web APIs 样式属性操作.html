@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div {
+            width: 400px;
+            height: 400px;
+            background-color: green;
+        }
+        
+        .chenge {
+            background-color: purple;
+            color: #fff;
+            font-size: 25px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div"></div>
+    <div>123</div>
+    <script>
+        // 样式属性操作
+        // 我们可以通过JS修改元素的大小、 颜色、 位置等样式。
+        // 1. element.style 行内样式操作
+        // 2. element.className 类名样式操作
+
+        // 注意:
+        // 1.JS里面的样式采取驼峰命名法比如fontsize、backgroundcolor
+        // 2.JS修改style样式操作,产生的是行内样式, css权重比较高
+        // 3. className 会直接更改元素的类名,会覆盖原先的类名。
+
+
+        var div = document.querySelectorAll('div')
+        var tr = true;
+
+        div[0].onclick = function() {
+            // .style里面的属性 采用驼峰命名法
+
+            if (tr) {
+                div[0].style.backgroundColor = 'red'
+                div[0].style.width = '500px';
+                tr = !tr;
+            } else {
+                div[0].style.backgroundColor = 'green'
+                div[0].style.width = '400px';
+                tr = !tr;
+            }
+        }
+
+        // 1.使用element. style 获得修改元素样式 如果样式比较少或者功能简单的情况下使用
+        // 2.我们可以通过修改元素的className更改元素的样式适合于样式较多或者功能复杂的情况
+        //3.如果想要保留原先的类名，可以几个都写
+
+        div[1].onclick = function() {
+            // this.className = 'chenge'
+            this.className = 'div chenge'
+
+        }
+    </script>
+
+</body>
+
+</html>

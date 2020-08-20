@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>2.5JavaScript的运算符</title>
+</head>
+
+<body>
+  <script>
+    // 只有一个变量参与运算叫一元运算符 比如++num --num ！num
+    // 有两个变量参与就叫二元运算符，加减乘除就叫二元运算符
+    // 条件运算符也叫做三元运算符
+
+    //       运算符优先级
+    // 优先级     运算符        顺序
+    // 1         小括号         ()
+    // 2         一元运算符      ++ -- !
+    // 3         算数运算符      先*/%后+-
+    // 4         关系运算符      > >= < <=
+    // 5         相等运算符      == != === !==
+    // 6         逻辑运算符      先&&后||
+    // 7         赋值运算符      =
+    // 8         逗号运算符      ,
+
+    // 运算符（operator）也别称作操作符，用于实现赋值、比较和执行算数、运算等功能的符号
+    // 运算符     描述        实例
+    // +          加          10 + 20 = 30
+    // -          减          10 - 20 = -10
+    // *          乘          10 * 20 = 200
+    // /          除          10 / 20 = 0.5
+    // %          取余数(取模) 返回除法的余数9%2= 1
+
+    // 浮点数在运算中会有问题
+    console.log(0.1 + 0.2); // 输出0.30000000000000004
+    console.log(0.7 * 10); // 输出7
+    console.log(0.07 * 100); // 输出7.000000000000001
+    // 浮点数的最高精度是17位小数，但在进行算数计算时其精度远不如整数
+    var num = 0.1 + 0.2;
+    console.log(num); // 输出0.30000000000000004
+    console.log(num == 0.3); // 输出false
+    console.log('------');
+
+    // 表达式是由数字、运算符、变量等组成的式子
+    // 分为数学表达式、比较表达式、逻辑表达式、简约表达式
+    // 例子：数学表达式
+    // 加 var jia = 1 + 1
+    // 减 var jian = 1 - 1
+    // 乘 var cheng = 1 * 1
+    // 除 var chu = 1 / 1
+    // () 优先级  var you = 1 + (5 * 4)
+
+    // 例子：比较表达式
+    // 比较运算符会返回一个布尔值，true或者false
+    // 大于     >       2 > 1         返回true
+    // 小于     <       2 < 1         返回false
+    // 大于等于 >=      2 >= 2        返回true
+    // 小于等于 <=      3 <= 2        返回false
+    // 等等于   ==      2 == 2        返回true
+    // 等等于   ==      2 == '2'        返回true    ==会进行默认数据转换 转数字类型
+    // 不等于   !=      22 != 22      返回false
+    // 全等于   ===     22 === '22'   返回false     全等要求值和数据都一样
+
+    // 逻辑表达式
+    // 逻辑与 && 每个条件都必须为true,结果才为true      true && true
+    console.log(3 > 5 && 3 > 2); // false
+    console.log(3 < 5 && 3 > 2); // true
+    console.log('------');
+    // 逻辑或 ||(or) 只要有一个条件为true,结果就为true      true || false
+    console.log(3 > 5 || 3 > 2); // true
+    console.log(3 > 5 || 3 > 4); // false
+    console.log('------');
+    // 逻辑非 !  当条件为false,结果就为true            !false
+    console.log(!false); // true
+    console.log(!true); // false
+    console.log('------');
+    // 逻辑短路
+    // &&如果表达式 1 为true则返回最后一个表达式 如果表达式 1 为false则返回表达式 1
+    console.log(123 && 456); // 返回456
+    console.log(123 && 0); // 返回0
+    console.log(456 && 123 && 789 && 5); // 返回5
+    console.log(0 && 123 && 789 && 5); // 返回0
+    console.log('------');
+    // ||如果表达式 1 为true则返回表达式 1 如果表达式 1 为false则返回下一个为true的表达式
+    console.log(123 || 456); // 返回123
+    console.log(123 || 0); // 返回123
+    console.log(456 || 123 || 789 || 5); // 返回456
+    console.log(0 || 123 || 789 || 5); // 返回123
+    console.log(0 || null || 789 || 5); // 返回789
+    console.log('------');
+    // 逻辑中断操作（短路操作）
+    // ||短路后之执行第一个数据，不会执行第二个
+    var abc = 0;
+    console.log(123 || abc++); // 返回123
+    console.log(abc); // 返回0
+
+    console.log(123 && abc++); // 返回 0
+    console.log(abc); // 返回1
+    console.log('------');
+
+    // 赋值表达式
+    // 赋值于 =
+    // v = v + 5
+
+    // 加等于 +=
+    //     var v= 1;
+    //     v+=5;  // v = v + 5
+
+    // 减等于 -=
+    //     var v= 1;
+    //     v-=5;  // v = v - 5
+
+    // 乘等于 *=
+    //     var v= 1;
+    //     v*=5;  // v = v * 5
+
+    // 除等于 /=
+    //     var v= 1;
+    //     v/=5;  // v = v / 5
+
+    // 取余于 /=
+    //     var v= 11;
+    //     v%=5;  // v = v % 5
+
+    // 自增++ 和 自减--
+    // ++ 和 -- 放前后是有区别的
+    // 放置在后会先返回原值再自加或自减
+    // 放置在前会先自加或自减再返回原值
+
+    var age1 = 22;
+    var age2 = 22;
+    var age3 = 22;
+    var age4 = 22;
+    console.log(age1++); // 输出22
+    console.log(age2--); // 输出22
+    console.log(--age3); // 输出21
+    console.log(++age4); // 输出23
+    console.log('------');
+    // ++--是会影响到变量的，所以分开算
+    var age0 = 22;
+    console.log(age0++); // 输出22
+    console.log(age0--); // 输出23
+    console.log(--age0); // 输出21
+    console.log(++age0); // 输出22
+  </script>
+</body>
+
+</html>

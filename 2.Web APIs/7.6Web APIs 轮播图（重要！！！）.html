@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/scrollt.js"></script>
+    <script src="js/index.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .w {
+            width: 900px;
+            margin: 0 auto;
+        }
+        
+        .main {
+            width: 980px;
+            height: 455px;
+            margin-left: 70px;
+            margin-top: 10px;
+        }
+        
+        .focus {
+            position: relative;
+            width: 768px;
+            height: 400px;
+            background-color: purple;
+            overflow: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .focus ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 500%;
+        }
+        
+        .focus ul li {
+            float: left;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .arrow-l,
+        .arrow-r {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 24px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-family: "icomoon";
+            font-size: 18px;
+            z-index: 2;
+        }
+        
+        .arrow-r {
+            right: 0;
+        }
+        
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            left: 45%;
+        }
+        
+        .circle li {
+            float: left;
+            width: 9px;
+            height: 9px;
+            /*background-color: #fff;*/
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin: 0 3px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .current {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <div class="main">
+            <div class="focus">
+                <!-- 左侧按钮 -->
+                <a href="javascript:;" class="arrow-l">&lt;</a>
+                <!-- 右侧按钮 -->
+                <a href="javascript:;" class="arrow-r">&gt;</a>
+                <!-- 核心的滚动区域 -->
+                <ul>
+                    <li>
+                        <a href="#"><img src="../images/Rotation1.jpg"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../images/Rotation2.jpg"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../images/Rotation3.jpg"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../images/Rotation4.png"></a>
+                    </li>
+                </ul>
+                <!-- 小圆圈 -->
+                <ol class="circle">
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <script></script>
+</body>
+
+</html>

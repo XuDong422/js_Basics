@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.4JavaScript的变量</title>
+  </head>
+  <body>
+    <!-- 声明一个变量并赋值，称之为变量的初始化 -->
+    <script>
+      // var 是js关键字，类似的有const、let，  name是定义的变量名，使用这个变量名才能访问到存储变量的空间。
+      var name = '许东';
+      document.write(name);
+      var age;
+      age = 22;
+      document.write('今年：' + age + ' 岁');
+
+      //声明多个变量
+      var address = '莆田';
+      Email = '1738482601@qq.com';
+      wages = '4000￥';
+
+      //逐次打印变量
+      console.log(name);
+      console.log(age);
+      console.log(address);
+      console.log(Email);
+      console.log(wages);
+
+      //将这些数据放进对象里并答应
+      var xx = {};
+      xx.name = name;
+      xx.age = age;
+      xx.address = address;
+      xx.Email = Email;
+      xx.wages = wages;
+
+      console.log(xx);
+
+      //同一个变量名在多次赋值后，只有上方最近一个才生效
+      var en = 'en';
+      console.log(en);
+      var en = 'an';
+      console.log(en);
+      var en = 'zn';
+      console.log(en);
+
+      //变量特殊情况
+      var an1;
+      console.log(an1);
+      //未赋值输出为undefined
+      //   console.log(an2);
+      //未定义变量和赋值会报错
+      an3 = 10;
+      console.log(an3);
+      //未定义变量有赋值可以打印结果10
+
+      // 变量命名规范
+      // 由字母(A-Za-z).数字(0-9)、 下划线()、 美元符号($ )组成,如: usrAge, num01, _name
+      // 严格区分大小写。var app;和var App;是两个变量
+      // 不能以数字开头。18age 是错误的
+      // 不能是关键字、保留字。例如:var、 for. while
+      // 变量名必须有意义。MMD BBD age
+      // 遵守驼峰命名法。首字母小写,后面单词的首字母需要大写。myFirstName
+    </script>
+  </body>
+</html>

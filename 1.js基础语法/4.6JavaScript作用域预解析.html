@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>4.6JavaScript作用域预解析</title>
+</head>
+
+<body>
+    <script>
+        // 预解析
+        // JavaScript代码是由浏览器中的JavaScript解析器来执行的。JavaScript 解析器在运行JavaScript代码的
+        // 时候分为两步:预解析和代码执行。
+
+        // 1.js引擎运行js分为两步:预解析 代码执行
+        //      (1).预解析js引擎会把js里面所有的var还有function提升到当前作用域的最前面
+        //      (2).代码执行按照代码书写 的顺序从上往下执行
+        // 2.预解析分为变量预解析(变量提升) 和函数预解析(函数提升)
+        //      (1)变量提升就是把所有的变量声明提升到当前的作用域最前面不提升赋值操作
+        //      (2)函数提升就是把所有的函数声明提升到当前作用域的最前面 不调用函数
+
+        // 预解析例子
+        // 变量的值未定义、在使用代码的下方、都会出错，但是函数没有出错
+
+        // console.log(num1);
+        // 如果在使用的时候没有定义num1这个变量它会报错 ： num1 is not defined
+
+        console.log(num1);
+        var num1 = 10;
+        // 返回undefined 有在js中定义num1但是返回空
+        // 上面的两行代码相当于这么执行
+        // var num1；
+        // console.log(num1);
+        // num1 = 10;
+        console.log('------');
+
+        fn1();
+
+        function fn1() {
+            console.log(11);
+        }
+        // 输出11
+
+        function fn2() {
+            console.log(22);
+        }
+        fn2();
+        // 输出22
+
+        // fun();// 报错
+
+        var fun = function() {
+            console.log(33);
+        };
+        fun(); // 输出33
+
+        // 函数表达式 调用必须在函数表达式的下面
+        // 上面的三行代码相当于这么执行
+        // var fun；
+        // fun（）；
+        // fun = function（）{
+        //     console.log(33);
+        // }
+
+        var num = 10;
+        aad();
+
+        function aad() {
+            console.log(num); // undefined
+            var num = 20;
+            // console.log(num); // 20
+        }
+        // 相当于这么执行
+        // var num；
+        // function fun（）{
+        //      var num；
+        //      console.log(num);
+        //      num = 20;
+        // }
+        // num = 10;
+        // fun;
+
+        console.log('------');
+
+        var a = 18;
+        f1();
+
+        function f1() {
+            var b = 9;
+            console.log(a); // undefined
+            console.log(b); // 9
+            var a = 123;
+        }
+        // 上面的代码相当于这么执行
+        // var a;
+        // function(){
+        //      var b;
+        //      var a;
+        //      b = 9;
+        //      console.log(a);
+        //      console.log(b);
+        //      a = 123;
+        // }
+        // a = 18;
+
+        console.log('------');
+
+        f1();
+        console.log(g); // 9
+        console.log(d); // 9
+        console.log(e); // 报错
+
+        function f1() {
+            var e = d = g = 9;
+            console.log(e); // 9
+            console.log(d); // 9
+            console.log(g); // 9
+        }
+        // 因为d和g没有使用var所以他们变成了全局变量，在函数外也可以使用，
+        // 但是e有var是局部变量，所以在函数外打印会报错
+
+        // 上面代码相当于这么执行
+        // function f1() {
+        //     var e;
+        //     d = g = 9;
+        //     //相当于vara=9;b=9;c=9;b和c直接赋值没有var声明当全局变量看
+        //     //集体声明vara=9,b=9,C=9;
+        //     console.log(e);
+        //     console.log(d);
+        //     console.log(g);
+        // }
+        // f1();
+        // console.log(g);
+        // console.log(d);
+        // console.log(e);
+    </script>
+</body>
+
+</html>

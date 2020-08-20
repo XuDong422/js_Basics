@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        
+        .a2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        .b {
+            top: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        
+        .b2 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <div class="a2">
+            1
+        </div>
+    </div>
+    <br>
+    <div class="b">
+        <div class="b2">
+            2
+        </div>
+    </div>
+
+    <script>
+        // mouseenter鼠标事件
+        // ●当鼠标移动到元素. 上时就会触发mouseenter事件
+        // ●类似mouseover ,它们两者之间的差别是
+        // ●mouseover 鼠标经过自身盒子会触发,经过子盒子还会触发。mouseenter 只会经过自身盒子触发
+        // ●之所以这样,就是因为mouseenter不会冒泡
+        // ●跟mouseenter搭配鼠标离开mouseleave同样不会冒泡
+
+        var a = document.querySelector('.a');
+        var a1 = document.querySelector('.a1');
+        var b = document.querySelector('.b');
+        var b1 = document.querySelector('.b1');
+        a.addEventListener('mouseover', function() {
+            console.log(11);
+        }); // 进入的时候触发一次 退出的时候不触发,mouseover会继承到它的子元素.
+        b.addEventListener('mouseenter', function() {
+            console.log(11);
+        }); // 进入的时候触发一次 退出的时候不触发,mouseover会继承到它的子元素.
+    </script>
+</body>
+
+</html>

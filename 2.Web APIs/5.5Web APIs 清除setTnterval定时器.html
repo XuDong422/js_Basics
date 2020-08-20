@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="a1">开启定时</button>
+    <button id="a2">关闭定时</button>
+    <script>
+        // var btns = document.querySelector('button');
+        var a1 = document.querySelector('#a1');
+        var a2 = document.querySelector('#a2');
+
+        var times;
+        a1.addEventListener('click', function() {
+            times = setInterval(function() {
+                console.log('hi');
+            }, 1000);
+        });
+        a2.addEventListener('click', function() {
+            clearInterval(times);
+        });
+    </script>
+</body>
+
+</html>

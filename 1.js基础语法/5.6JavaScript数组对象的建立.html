@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建数组的两种方式
+        //1.利用数组字面量
+        var arr = [1, 2, 3];
+        console.log(arr[0]);
+        // 2.利用new Array()
+        // var arr1 = new Array(); // 创建了一个空的数组
+        // var arr1 = new Array(2); // 这个2表示数组的长度为2里面有两个空的数组元素  length: 2
+        var arr1 = new Array(2, 3); // 等于[2, 3] 这样写表示里面有2个数组元素 是 2和3
+        console.log(arr1);
+
+        // 检测是否为数组
+        // (1) instanceof 运算符它可以用来检测是否为数组
+
+        var arr1 = [];
+        var obj1 = {};
+        console.log(arr1 instanceof Array); // 返回 true
+        console.log(arr1 instanceof Object); // 返回 true
+        console.log(obj1 instanceof Array); // 返回 false
+        console.log(arr1 instanceof Object); // 返回 true 确实返回true 数组也是对象的一种，使用instanceof都会返回true
+
+        console.log('------');
+        // (2) Array.isArray(参数); H5新增的方法 ie9以上版本支持
+        console.log(Array.isArray(arr1)); // 返回true
+        console.log(Array.isArray(obj1)); // 返回false
+
+        // 5.3添加删除数组元素的方法
+        // 方法名          说明                                                返回值
+        // pμsh(参数1...)  末尾添加一个或多个元素，注意修改原数组                   并返回新的长度
+        // pop()           删除数组最后一个元素， 把数组长度减1无参数、修改原数组    返回它删除的元素的值
+        // unshift(参数1...) 向数组的开头添加一个或更多元素，注意修改原数组       并返回新的长度
+        // shift()         删除数组的第一个元素， 数组长度减1无参数、修改原数组      并返回第一个元素的值
+
+
+
+        // 1. push() 在我们数组的末尾添加一个或者多个数组元素 push 推
+        // (1) push 是可以给数组-->后面追加新的元素
+        // (2) push() 参数直接写 数组元素就可以了
+        // (3) push完毕之后，返回的结果是新数组的长度
+        // (4) 原数组也会发生变化
+
+        var arr2 = [1, 2, 3];
+        arr2.push(4, 'xd'); // 这里将4和xd添加进数组
+        console.log(arr2); // 打印 [1, 2, 3, 4, "xd"]
+        console.log(arr2.push(5, 'xzn')); // 打印7 是数组长度
+        console.log(arr2); // 打印  [1, 2, 3, 4, "xd", 5, "xzn"]
+
+        // 2. unshift 在数组的开头 添加个或者多个数组元素
+        // (1) unshift是可以给数组前面追加新的元素
+        // (2) unshift() 参数直接写数组元素就可以了
+        // (3) unshift完毕之 后，返回的结果是 新数组的长度
+        // (4) 原数组也会发生变化
+
+        arr2.unshift('red', 'abc');
+        console.log(arr2); // 打印  ["red", "abc", 1, 2, 3, 4, "xd", 5, "xzn"]
+        console.log(arr2.unshift(9)); // 返回10
+
+        // 3. pop() 它可以删除数组的最后一个元素
+        // (1) poppop()是可以删除数组的最后一个元素一次 只能删除一个元素
+        // (2) pop() 没有参数
+        // (3) pop完毕之后，返回的结果是删除的那个元素
+        // (4) 原数组也会发生变化
+        console.log(arr2.pop()); // 返回 xzn 删除哪个元素就返回那个元素
+        console.log(arr2); // 返回 [9, "red", "abc", 1, 2, 3, 4, "xd", 5]
+        console.log(arr2.pop(2)); // 返回 5 没有参数，写什么都没有作用
+
+        // 4. shift() 它可以删除数组的第一 个元素
+        // (1) shift()是可 以删除数组的第一个元素一次只能删除一 个元素
+        // (2) shift() 没有参数
+        // (3) shift()完毕之后， 返回的结果是删除的那个元素
+        // (4) 原数组也会发生变化
+        console.log(arr2.shift()); // 9 删除第一个元素
+        console.log(arr2); // ["red", "abc", 1, 2, 3, 4, "xd"]
+
+        // 案例筛选数组
+        var arr3 = [3500, 4000, 4500, 2000, 1800];
+        var newArr = [];
+        for (var i = 0; i < arr3.length; i++) {
+            if (arr3[i] > 2000) {
+                // newArr[newArr.length] = arr3[i] // 旧方法
+                newArr.push(arr3[i]) // 使用push的新方法
+            }
+        }
+        console.log(arr3);
+        console.log(newArr);
+
+        console.log('------');
+
+        // 数组排序
+        // 1.翻转数组
+        var ar = ['xd', 'xzn', 'aaa']
+        ar.reverse();
+        console.log(ar); // 打印 ["aaa", "xzn", "xd"] 数组成功翻转
+
+        // 2.数组排序(冒泡排序)
+        var ae = [7, 8, 2, 4, 6, 3, 0, 8, 5, 9, 1]
+        ae.sort();
+        console.log(ae); // 打印[0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9] 数组冒泡排序 有缺点如下
+
+        var aE = [1, 11, 2, 9, 0, 87, 45, 7]
+            // aE.sort();
+        console.log(aE); // 打印[0, 1, 11, 2, 45, 7, 87, 9] 个位数是正确的但是非个位会出现排序不正确的错误
+        // 错误解决方法
+        aE.sort(function(a, b) {
+            return a - b //使用这个就可以升序冒泡
+                //return b - a //使用这个就可以降序冒泡
+        });
+        console.log(aE); // 打印正确 [0, 1, 2, 7, 9, 11, 45, 87]
+
+
+        console.log('------');
+
+
+        // 数组索引方法
+        // 方法名       说明                            返回值
+        // indexOf()    数组中查找给定元素的第一个索引  如果存在返回索引号如果不存在，则返回-1.
+        // lastIndexOf()在数组中的最后一个的索引,       如果存在返回索引号如果不存在，则返回-1。
+
+        //返回数组元素索引号方法index0f(数组元素) 作用就是返回该数组元素的索引号
+        //它只返回第一个满足条件的索引号
+        //如果找不打到就返回-1
+        var arr4 = ['red', 'green', 'blue', 'pink', 'blue'];
+        console.log(arr4.indexOf('blue')); // 返回 2 找到了数组元素返回索引号
+        console.log(arr4.indexOf('white')); // 返回-1 找不到元素
+
+        console.log(arr4.lastIndexOf('blue')); // 返回 4 
+        console.log(arr4.lastIndexOf('pink')); // 返回 3
+
+        // indexOf()从前往后找 lastIndexOf()从后往前找
+
+        console.log('------');
+        //数组去重['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'] 要求去除数组中重复的元素。
+        // 1.目标:把旧数组里面不重复的元素选取出来放到新数组中，重复的元素只保留一个，放到新 数组中去重。
+        // 2.核心算法:我们遍历旧数组，然后拿着旧数组元素去查询新数组，如果该元素在新数组里面没有出现过，我们就添加， 否 则不添加。
+        // 3.我们怎么知道该元素没有存在? 利用新数组. indexOf(数组元素)如果返回时- 1就说明新数组里面没有改元素
+        //封装一个去重的函数 unique独一无二的
+
+        var arr5 = ['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'];
+
+        function unique(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) === -1) {
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr
+        }
+
+        var demo = unique(arr5)
+        console.log(demo); // 返回 ["c", "a", "z", "x", "b"] 去重成功
+
+        console.log('------');
+
+        // 数组转换成字符串
+        // 1.toString() 可以将数组转换为字符串
+        var add = [1, 2, 3];
+        console.log(add.toString()); // 打印 1,2,3
+        // 2.join(分隔符)
+        var add1 = ['green', 'blue', 'pink']
+        console.log(add1.join()); // 打印green,blue,pink
+        console.log(add1.join('/')); // 打印green/blue/pink
+        console.log(add1.join('*')); // 打印green*blue*pink
+
+        // 方法名          说明                              返回值
+        // concat()       连接两个或多 个数组不影响原数组      返回一个新的数组
+        // slice()        数组截取slice(begin, end)          返回被截取项目的新数组
+        // splice()       数组删除splice(第几个开始要删除个数) 返回被删除项目的新数组注意， 这个会影响原数组
+        // slice()和splice()目的基本相同, 重点在splice()
+
+        // 案例
+        // ['red','blue','red','green','pink','red'],求red 出现的位置和次数
+        var adt = ['red', 'blue', 'red', 'green', 'black', 'red']
+        var index = adt.indexOf('red');
+        var num = 0;
+        while (index !== -1) {
+            console.log(index);
+            num++
+            index = adt.indexOf('red', index + 1)
+        }
+        console.log('red出现了' + num + '次!');
+    </script>
+</body>
+
+</html>

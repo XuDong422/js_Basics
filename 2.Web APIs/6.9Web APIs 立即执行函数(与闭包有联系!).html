@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 立即执行函数(function(){})()
+        // 主要作用: 创建一个独立的作用域。
+        // 1.普通函数
+        function fn() {
+            console.log(1);
+        };
+        fn(); // 输出 1
+
+        // 2.立即执行函数:不需要调用,立即能执行直接的函数
+        // 写法
+        // (function () {})()   or   (function () {}())
+
+        // 2.1
+        (function() {
+            console.log(2);
+        })(); // 输出 2  第二个小括号可以看作调用函数    可以写函数名
+        (function(a, b) {
+            console.log(a);
+        })(3, 4); // 输出 3  立即执行函数后面一定要加分号,表示这是一个独立的执行函数,否则下一个代码会报错
+
+        // 2.2
+        (function(a, b) {
+            console.log(a + b);
+        }(2, 2)); // 输出 4    可以写函数名
+
+        // 3.立即执行函数的最大作用是,独立创建了一个作用域,里面所有的变量都是局部变量不会有命名冲突的情况
+
+
+        
+    </script>
+</body>
+
+</html>

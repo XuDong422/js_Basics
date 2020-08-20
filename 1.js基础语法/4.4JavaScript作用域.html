@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>4.5JavaScript作用域的作用域链</title>
+</head>
+
+<body>
+    <script>
+        // 作用域概述
+        // 通常来说，一段程序代码中所用到的名字并不总是有效和可用的,而限定这个名字的可用性的代码范围就是这
+        // 个名字的作用域。作用域的使用提高了程序逻辑的局部性,增强了程序的可靠性,减少了名字冲突。
+
+        // 1.JavaScript作用域：就是代码名字在某个范围内起作用和效果
+        // 目的是为了提高程序的可靠性更重要的是减少命名冲突
+
+        // 2.js的作用域（es6）之前分为：全局作用域 局部作用域
+        //      2.1全局作用域范围：整个script标签，或者是一个单独的js文件从 在全局下都可以使用
+        //      例子：var num = 10；
+        //      2.2局部作用域（函数作用域）：在函数内部的就是局部作用域 这个代码的名字只是在函数内部起到效果和作用
+        //      函数的形参实际上就是局部变量
+        //      function fn() {
+        //          var num = 10;
+        //      }
+
+        // 注意如果在函数内部没有声明直接赋值的变量也属于全局变量
+        // 例子：
+        function nnn() {
+            var num1 = 10; // 局部变量
+            num2 = 20; //全局变量(不建议使用这种)
+        }
+        nnn();
+        // console.log(num1); //报错num1 is not defined
+        console.log(num2); //返回20
+
+        // 3.从执行效率来看全局变量和局部变量
+        //      3.1全局变量只有浏览器关闭的时候才会销毁，比较占内存资源
+        //      3.2局部变量 当我们程序执行完后就会销毁，比较节约内存资源
+
+        // 块级作用域
+        // 在es6前没有块级作用域
+        // 例
+        console.log('------');
+
+        for (var i = 0; i < 10; i++) {
+            console.log(i);
+        }
+        console.log(i); // 10
+
+        // 在es6浏览器中已经有块级作用域了
+        console.log('------');
+
+        {
+            for (var i = 0; i < 10; i++) {
+                console.log(i);
+            }
+            // console.log(i); // 这里如果打印会报错
+        }
+    </script>
+</body>
+
+</html>

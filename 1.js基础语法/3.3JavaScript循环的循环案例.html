@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>3.3JavaScript的循环案例</title>
+</head>
+
+<body>
+    <script>
+        num = 0;
+        for (var i = 1; i <= 100; i++) {
+            num += i;
+        }
+        console.log(num); // 输出5050
+        console.log(num / 100); //输出50.5
+
+        console.log('------');
+
+        nun = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                nun += i;
+            }
+        }
+        console.log(nun); // 输出2550
+
+        console.log('------');
+
+        var sun = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                sun += i;
+            }
+        }
+        console.log(sun);
+
+        console.log('------');
+
+        var str1 = '';
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                str1 += j + 'x' + i + '=' + i * j + ' ';
+            }
+            str1 += '\n';
+        }
+        console.log(str1);
+
+        console.log('------');
+
+        do {
+            var a = prompt('输入admin');
+            var b = prompt('输入12345');
+        } while (a !== 'admin' && b !== '12345');
+        alert('登录成功');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 概述
+        // 在典型的OOP的语言中(如Java) , 都存在类的概念,类就是对象的模板,对象就是类的实例,但在ES6之前,JS中并没用引入类的概念。
+        // ES6，全称ECMAScript6.0 , 2015.06发版。但是目前浏览器的JavaScript是ES5版本,大多数高版本的浏览器也支持ES6 ,
+        // 不过只实现了ES6的部分特性和功能。在ES6之前, 对象不是基于类创建的,而是用一一种称为构建函数的特殊函数来定义对象和它们的特征。
+        // 创建对象可以通过以下三种方式:
+        // 1.对象字面量
+        // var obj0 = new Object();
+        // 2. new Object()
+        // var obj1 = new Object();
+        // 3.自定义构造函数
+        // function men(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.ability = function() {
+        //         console.log('会学习');
+        //     }
+        // }
+        // var xd = new men('许东', 22);
+        // var xzn = new men('许智楠', 10);
+        // xd.ability();
+        // xzn.ability();
+
+        // 构造函数
+        // 构造函数是一种特殊的函数,主要用来初始化对象,即为对象成员变量赋初始值,它总与new一起使用。我
+        // 们可以把对象中一些公共的属性和方法抽取出来 ,然后封装到这个函数里面。
+        // 在JS中,使用构造函数时要注意以下两点:
+        // 1.构造函数用于创建某-类对象,其首字母要大写
+        // 2.构造函数要和new-起使用才有意义
+
+        // new在执行时会做四件事情:
+        // ①在内存中创建一个新的空对象。
+        // ②让this指向这个新的对象。
+        // ③执行构造函数里面的代码,给这个新对象添加属性和方法。
+        // ④返回这个新对象(所以构造函数里面不需要return)。
+
+        // JavaScript的构造函数中可以添加一些成员,可以在构造函数本身上添加,也可以在构造函数内部的this上添加。
+        // 通过这两种方式添加的成员,就分别称为静态成员和实例成员。
+        // ●静态成员:在构造函数本上添加的成员称为静态成员,只能由构造函数本身来访问
+        // ●实例成员:在构造函数内部创建的对象成员称为实例成员,只能由实例化的对象来访问
+
+        // 1.实例成员就是构造函数内部通过this添加的成员 uname age sing就是实例成员
+        //实例成员只能通过实例化的对象来访问
+        // console.log(xd.name);
+        // xd.adility();
+        // console.log(men.age); // undefined 不可以通过构造函数来访问实例成员
+        // 2.静态成员在构造函数本身上添加的成员 sex就是静态成员
+        // men.sex = '男';
+        // 静态成员只能通过构造函数来访问
+        // console.log(men.sex);
+        // console.log(xd.sex); // undefined 不能通过对象来访问
+
+        // 构造函数的问题
+        // 构造函数方法很好用,但是存在浪费内存的问题。
+
+        // console.log(xd.ability() === xzn.ability()); // 返回 false 因为他们的内存地址不同
+
+        // 构造函数原型prototype
+        // 构造函数通过原型分配的函数是所有对象所共享的。
+        // JavaScript规定, 每一个构造函数都有一个prototype属性, 指向另一个对象。
+        // 注意这个prototype就是一个对象, 这个对象的所有属性和方法, 都会被构造函数所拥有。
+        // 我们可以把那些不变的方法,直接定义在prototype对象上,这样所有对象的实例就可以共享这些方法。
+
+        function men(name, age) {
+            this.name = name;
+            this.age = age;
+            // this.ability = function() {
+            //     console.log('会学习');
+            // }
+        }
+        // men.prototype.ability = function() {
+        //     console.log('会学习');
+        // }
+        // men.prototype.like = function() {
+        //     console.log('电脑');
+        // }
+        men.prototype = {
+                constructor: men,
+                ability: function() {
+                    console.log('会学习');
+                },
+                like: function() {
+                    console.log('电脑');
+                },
+            } //如果我们修改了原来的原型对象，给原型对象赋值的是个对象,则必须手动的利用constructor
+        var xd = new men('许东', 22);
+        var xzn = new men('许智楠', 10);
+        xd.ability();
+        xzn.ability();
+        console.log(xd.ability() === xzn.ability()); // 返回 true
+
+        // 原型是什么?
+        // 一个对象,我们也称为prototype为原型对象。
+        // 一般情况下，我们的公共属性定义到构造函数里面，公共的方法我们放到原型对象身上
+
+        // 对象原型 __proto__
+        // 对象都会有一一个属性_ proto_ 指向构造函数的 prototype原型对象,之所以我们对象可以使用构造函数
+        // prototype原型对象的属性和方法,就是因为对象有__proto__原型的存在。
+
+        console.log(xd); // 对象身上系统自己添加一个__proto__指向构造函数的原型对象
+        // __proto__对象原型和原型对象 prototype是等价的
+        // __proto__对象原型的意义就在于为对象的查找机制提供一个方向 ,或者说一条路线,但是它是一个非标准属性，因此实际开发中,不可以使用这个属性,它只是内部指向原型对象prototype
+
+        console.log(xd.__proto__ === men.prototype); // 返回 true
+        //方法的查找规则:首先先看xd对象身上是否有ability 方法，如果有就执行这个对象上的ability
+        //如果么没有有ability这个方法，因为有_ proto的存在，就去构造函数原型对象prototype身上去查找ability这个方法
+
+        console.log(xd.__proto__); // 返回构造函数本身
+        console.log(men.prototype); // 返回构造函数本身
+
+        // constructor构造函数
+        // 对象原型(__proto__) 和构造函数(prototype) 原型对象里面都有一个属性constructor属性, constructor 我们称为构造函数, 因为它指回构造函数本身。
+        // constructor主要用于记录该对象引用于哪个构造函数, 它可以让原型对象重新指向原来的构造函数。
+        console.log(xd.__proto__.constructor); // 返回构造函数本身
+        console.log(men.prototype.constructor); // 返回构造函数本身
+        // constructor主要用于记录该对象弓|用于哪个构造函数,它可以让原型对象重新指向原来的构造函数。
+
+        // 构造函数、实例、原型对象三者之间的关系
+        //                 men.prototype
+        //               ---------------> 
+        // men构造函数                     men原型对象prototype
+        //   \           <---------------              /
+        //     \      men.prototype.constructor     /
+        //       \                               /
+        //                 xd.对象实例
+        //              xd.__proto__.constructor
+    </script>
+</body>
+
+</html>

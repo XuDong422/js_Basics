@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // String的扩展方法
+        // 模板字符串
+        // ES6新增的创建字符串的方式，使用反引号定义。
+        let name = `xudong`;
+        console.log(name); // xudong
+
+        // 模板字符串中可以解析变量。
+        let sayHello = `hello,my name is ${name}`;
+        console.log(sayHello); // hello,my name is xudong
+
+        // 模板字符串中可以换行
+        let result = {
+            name: 'zhangsan',
+            age: 20,
+            sex: '男'
+        }
+        let html = `
+        <div><span>${result.name}</span></div>
+        <div><span>${result.age}</span></div>
+        <div><span>${result.sex}</span></div>
+        `;
+        console.log(html);
+        // <div><span>zhangsan</span></div>
+        // <div><span>20</span></div>
+        // <div><span>男</span></div>
+
+
+        // 在模板字符串中可以调用函数。
+        const say = function() {
+            return '许东';
+        };
+        let greet = `我是${say()}`;
+        console.log(greet); // 我是许东
+
+
+        // 实例方法: startsWith( 和endsWith(
+        // startsWith():表示参数字符串是否在原字符串的头部，返回布尔值
+        // endsWith():表示参数字符串是否在原字符串的尾部，返回布尔值
+        let str = 'Hello world!';
+        console.log(str.startsWith('Hello')); // true
+        console.log(str.endsWith('!')); // true
+
+        // 实例方法: repeat()
+        // repeat方法表示将原字符串重复n次，返回一个新字符串。
+        console.log('x'.repeat(3)); // xxx
+        console.log('hello'.repeat(2)); // hellohello
+    </script>
+</body>
+
+</html>

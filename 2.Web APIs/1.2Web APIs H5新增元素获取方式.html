@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">盒子</div>
+    <div class="box">盒子</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+    <script>
+        // 1.document.getElementsByClassName('类名') 根据类名获取某些元素集合
+        var boxs = document.getElementsByClassName('box')
+        console.log(boxs); // 返回一个伪数组 里面有获取到两个div
+
+        // 2.document.querySelector('选择器') 根据指定选择器返回第一个元素对象
+        var nav = document.querySelector('li')
+        console.log(nav); // 返回<li>首页</li>
+        var nav1 = document.querySelector('#nav')
+        console.log(nav1); // 返回 id为nav 的div
+
+        // 3.document.querySelectorAll('选择器') 返回指定选择器的所有元素对象集合
+        var allBox = document.querySelectorAll('.box')
+        console.log(allBox); // 返回伪数组里面有两个class为box的元素
+        var allLi = document.querySelectorAll('li')
+        console.log(allLi); // 返回伪数组里面有两个li
+    </script>
+</body>
+
+</html>

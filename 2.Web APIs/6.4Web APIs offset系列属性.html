@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 150px;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+            background-color: purple;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <div class="son">son</div>
+
+    </div>
+    <script>
+        // 元素偏移量offset系列
+
+        // offset概述
+        // offset翻译过来就是偏移量, 我们使用offset系列相关属性可以动态的得到该元素的位置(偏移)、大小等。
+        // ● 获得元素距离带有定位父元素的位置
+        // ● 获得元素自身的大小(宽度高度)
+        // ● 注意: 返回的数值都不带单位
+
+        // offset系列常用属性:
+        // offset系列属性              作用
+        // element.offsetParent        返回作为该元素带有定位的父级元素如果父级都没有定位则返回body
+        // element.offsetTop           返回元索相对带有定位父元素上方的偏移
+        // element.offsetLeft          返回元素相对带有定位父元素左边框的偏移
+        // element.offsetWidth         返回自身包括padding、 边框、 内容区的宽度， 返回数值不带单位
+        // element.offsetHeight        返回自身包括padding.边框、 内容区的高度， 返回数值不带单位
+
+        var box = document.querySelector('.box');
+        var son = document.querySelector('.son');
+        // 1.可以得到元素的偏移 位置 返回不带单位的数值
+        console.log(box.offsetTop); // 150
+        console.log(box.offsetLeft); // 150
+        // position: relative; 如果。box的css不加这个那么son的测量标准会以浏览器窗口的距离定位
+        console.log(son.offsetTop); // 0
+        console.log(son.offsetLeft); // 50
+        // 2.可以得到元素的大小宽高 是包含padding+border+width
+        console.log(son.offsetWidth); // 100
+        console.log(son.offsetHeight); // 100
+        // 3.返回带有定位的父亲 否则返回的是body
+        console.log(son.offsetParent); // 返回 <div class="box">...</div>
+        console.log(box.offsetParent); // 返回 <body>.。.</body>
+
+        // offset与style区别
+        // offset
+        // ●offset 可以得到任意样式表中的样式值
+        // ●offset 系列获得的数值是没有单位的
+        // ●offsetWidth 包含padding+ border+width
+        // ●offsetWidth 等属性是只读属性,只能获取不能赋值
+        // ●所以, 我们想要获取元素大小位置,用offset更合适
+
+        // style
+        // ●style 只能得到行内样式表中的样式值
+        // ●style.width 获得的是带有单位的字符串
+        // ●style.width 获得不包含padding和border的值
+        // ●style.width 是可读写属性,可以获取也可以赋值
+        // ●所以,我们想要给元素更改值,则需要用style改变
+        console.log(son.style.width); // 当HTML文档没有style属性 返回 空
+        console.log(son.style.Width); // 当HTML文档没有style属性 返回 undefined
+        // 当HTML文档有style的Width属性就可以返回正确数值
+    </script>
+</body>
+
+</html>

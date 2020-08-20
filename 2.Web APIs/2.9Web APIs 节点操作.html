@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 节点的优点 -->
+    <div>div</div>
+    <span>span</span>
+    <ul>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+    </ul>
+    <ol>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+    </ol>
+    <div class="dome">
+        <div class="box">
+            <span class="erweima">x</span>
+        </div>
+    </div>
+    <button onclick="fn()">删除</button>
+    <script>
+        // 点操作
+        // 获取元素通常使用两种方式:
+        // 1.利用DOM提供的方法获取元素
+        // ●document.getElementByld()
+        // ●docurment.getElementsByTagName()
+        // ●document.querySelector
+        // ●逻辑性不强、繁琐
+
+        // 2.利用节点层级关系获取元素
+        // ●利用父子兄节点关系获取元素
+        // ●逻辑性强， 但是兼容性稍差
+
+        // 这两种方式都可以获取元素节点,我们后面都会使用,但是节点操作更简单
+
+        // 节点概述:
+        // 网页中的所有内容都是节点(标签、属性、文本、注释等) , 在DOM中,节点使用node来表示。
+        // HTML DOM树中的所有节点均可通过JavaScript进行访问,所有HTML元索(节点)均可被修改,
+        // 也可以创建或删除。
+        // 一般来说,节点至少拥有nodeType (节点类型)、nodeName (节点名称)和nodeValue(节点值)这三个基本属性。
+        // ●元素节点nodeType为1
+        // ●属性节点nodeType为2
+        // ●文本节点nodeType为3 (文本节点包含文字、空格、换行等)
+        // 在开发中,节点操作主要操作的是元素节点
+
+        var box = document.querySelector('.box')
+        console.dir(box)
+
+        // 节点层级
+        // 利用DOM树可以把节点划分为不同的层级关系,常见的是父子兄层级关系。
+        // 1.父级节点
+        // node.parentNode
+        // 它得到的是离元素最近的父级节点
+        // 如果指定的节点没有父节点则返回null
+        var ewi = document.querySelector('.erweima');
+        console.log(ewi.parentNode);
+        // 返回
+        // <div class="box">
+        //     <span class="erweima">x</span>
+        // </div>
+
+
+
+        // 子节点childNodes 包含元素节点,文本节点等
+        // parentNode.childNodes (标准)
+        var ul = document.querySelector('ul')
+        var lis = ul.querySelectorAll('li')
+        console.log(ul.childNodes); // 返回NodeList(9) [text, li, text, li, text, li, text, li, text]
+        // 每个li都有一个li+text,多出来的一个text是ul转li的换行符
+        console.log(ul.childNodes[0].nodeType); // 返回3 因为这是文本节点文本节点包含文字、空格、换行等
+        // 注意:返回值里面包含了所有的子节点,包括元索节点，文本节点等。
+        // 如果只想要获得里面的元素节点,则需要专门处理。所以一般不提倡使用childNodes
+
+        // 子元素节点children 这个更常用
+        console.log(ul.children); // 返回HTMLCollection(4) [li, li, li, li]
+
+        // firstChild返回第一个子节点 不管是文本节点还是元素节点,找不到则返回null.同样,也是包含所有的节点。
+        // lastChild返回最后一个子节点 不管是文本节点还是元素节点,找不到则返回null.同样,也是包含所有的节点。
+        var ol = document.querySelector('ol')
+        console.log(ol.firstChild); // 返回ol的第一个li的所有属性与方法
+        console.log(ol.lastChild); // 返回ol的最后一个li的所有属性与方法
+
+        // firstElementChild返回第一个子元素节点 找不到则返回null.
+        // lastElementChild返回第一个子元素节点 找不到则返回null.
+        console.log(ol.firstElementChild); // <li>li</li> 返回了ol第一个元素节点
+        console.log(ol.lastElementChild); // <li>li</li> 返回了ol最后一个元素节点
+        // 注:这两个方法有兼容性问题, IE9以上才支持。
+
+        // 实际开发中，firstchild和lastchild 包含其他节点,操作不方便,而firstElementchild和
+        // lastElementchild又有兼容性问题,那么如何获取第一个子元索节点或最后一个子元索节点呢?
+
+        // 解决方案:
+        // 1.如果想要第一个子元素节点,可以使用parentNode.chilren[0]
+        console.log(ul.children[0]); // 返回 ul第一个元素节点
+        console.log(ul.children[ul.children.length - 1]); // 返回 ul最后一个元素节点
+
+        // 兄弟节点
+        var div = document.querySelector('div');
+        // nextsibling返回当前元素的下一个兄弟节点,找不到则返回null.同样,也是包含所有的节点。
+        console.log(div.nextSibling); // 返回 文本节点
+        // previoussibling返回当前元素上一个兄弟节点,找不到则返回null。同样,也是包含所有的节点
+        console.log(div.previousSibling); // 返回 文本节点
+        // nextElementSibling返回当前元素下一个兄弟元素节点,找不到则返回null.
+        console.log(div.nextElementSibling); // 返回 <span>span</span>
+        // previousElementsibling返回当前元索上一个兄弟节点,找不到则返回null.
+        console.log(div.previousElementSibling); // 返回 null
+        // 注意: 后两个方法有兼容性问题， IE9 以上才支持。
+
+        // 兄弟节点怎么解决兼容性问题 通过封装函数实现
+        // function getNextElementSibling(div) {
+        //     var el = div;
+        //     while (el = el.nextSibling) {
+        //         if (el.nodeType === 1) {
+        //             return el;
+        //         }
+        //         return null;
+        //     }
+        // }
+
+        // 创建节点
+        // 1.document.createElement()方法创建由tagName指定的HTMI 元素。因为这些元素原先不存在,
+        // 是根据我们的需求动态生成的,所以我们也称为动态创建元素节点。
+        var li = document.createElement('li');
+        //添加节点
+        // 2.node.appendchild()方法将-一个节点添加到指定父节点的子节点列表末尾。类似于css里面的after伪元素。
+        // var ul = document.querySelector('ul');
+        ul.appendChild(li);
+        // 3.node.insertBefore()方法将一个节点添加到父节点的指定子节点前面。类似于css里面的before伪元素。
+        var lili = document.createElement('li');
+        ul.insertBefore(lili, ul.children[0]);
+
+        // 删除节点
+        // node.removechild()方法从DOM中删除一个子节点 ,返回删除的节点
+        var button = document.querySelector('button')
+
+        function fn() {
+            ul.removeChild(ul.children[0])
+            if (ul.children.length == 0) {
+                button.disabled = true;
+            }
+        }
+
+        // 复制节点(克隆节点)
+        // node. cloneNode ()方法返回调用该方法的节点的一个副本。也称为克隆节点/拷贝节点
+        // 1.node.cloneNode(); 括号为空或者里面是false浅拷贝只复制标签不复制里面的内容
+        // 2.node.cloneNode(true);括号为true深拷贝复制标签复制里面的内容
+        var lili = ol.children[0].cloneNode(true);
+        ol.appendChild(lili);
+    </script>
+</body>
+
+</html>

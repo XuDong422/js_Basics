@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JavaScript的成员查找机制(规则)
+        // ①当访问一个对象的属性(包括方法)时,首先查找这个对象自身有没有该属性。
+        // ②如果没有就查找它的原型(也就是_proto_ 指向的prototype原型对象).
+        // ③如果还没有就查找原型对象的原型(Object的原型对象).
+        // ④依此类推一直找到Object为止 (null).
+        // ⑤_ proto_ 对象原型的意义就在于为对象成员查找机制提供一个方向 ,或者说一条路线。
+
+        function Men(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Men.prototype.like = function() {
+            console.log('电脑');
+        }
+        Men.prototype.num = '32'
+        var xd = new Men('许东', 22);
+        console.log(xd.num); // 输出 32
+        console.log(Object.prototype); // 输出 32
+        console.log(xd);
+        console.log(xd.prototype);
+        console.log(xd.toString());
+    </script>
+</body>
+
+</html>

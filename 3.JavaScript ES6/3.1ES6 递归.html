@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归
+        // 什么是递归
+        // 如果一个函数在内部可以调用其本身,那么这个函数就是递归函数。
+        // 简单理解:函数内部自己调用自己这个函数就是递归函数
+        // 递归函数的作用和循环效果一-样
+        // 由于递归很容易发生“栈溢出”错误( stack overflow) , 所以必须要加退出条件return.
+
+        var num = 1;
+
+        function fn() {
+            if (num == 6) { //一定要给返回条件
+                return;
+            }
+            console.log(num);
+            num++;
+            fn();
+        }
+        fn();
+
+        // 浅拷贝和深拷贝
+        // 1.浅拷贝只是拷贝一层更深层次对象级别的只拷贝引用
+        // 2.深拷贝拷贝多层每一级别的数据都会拷贝.
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>3.5JavaScript数组的使用</title>
+</head>
+
+<body>
+    <script>
+        // 1. 数组(Array)：就是一组数据的集合 存储在单个变量下的方式
+        // 2. 数组的两种创建方式
+        //      2.1利用new创建方式
+        //          var 数组名 = new Array()；
+        //              or
+        //          var arr = new Array();
+        //      2.2利用数组字面量创建数组
+        //          var arr = [];
+
+        var arr = [7, 89, '许东', true];
+        console.log(arr);
+
+        // 数组的字面量数方括号[]
+        // 声明数组并赋值被称为数组的初始化
+        // 这种字面量方式是最多使用的方式
+
+        // 数组元素的类型 数组中可以存放任意类型的数据，例如字符串、数字、布尔值
+
+        // 获得数组元素 数组名【索引号】，索引号从0开始
+        console.log(arr[2]); // 输出许东
+        console.log(arr[5]); // 输出undefined
+
+        // 遍历数组
+        // 可以使用length来检测数组元素的个数
+        console.log(arr.length);
+        console.log('------');
+        // 数组的长度是元素个数 不要跟索引号混淆
+        for (i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+
+        console.log('------');
+
+        // 求数组的总和+平均值
+        var num = [5, 80, 28, 64, 0];
+        var sum = 0;
+        for (var i = 0; i < num.length; i++) {
+            sum += num[i];
+        }
+        console.log(sum, sum / num.length); // 总和177 平均35.4
+        console.log('------');
+        var aaa = 0;
+        for (var i = 0; i < num.length; i++) {
+            if (aaa < num[i]) {
+                aaa = num[i];
+            }
+        }
+        console.log(aaa);
+
+        console.log('------');
+
+        var bb = '';
+        var jg = '|';
+        for (var i = 0; i < num.length; i++) {
+            bb += num[i] + jg;
+        }
+        console.log(bb);
+
+        console.log('------');
+        console.log('------');
+        console.log('------');
+
+        var abc = ['red', 'green', 'blue'];
+        console.log(abc.length);
+        abc.length = 5;
+        console.log(abc);
+        console.log(abc[3]); // 输出undefined
+        console.log(abc[4]); // 输出undefined
+
+        abc[3] = 'pink';
+        abc[4] = 'white';
+        console.log(abc);
+        console.log(abc[3]); // 输出pink
+        console.log(abc[4]); // 输出white
+
+        var abc = '许东';
+        console.log(abc); // 输出许东
+        // 不要直接给数组名赋值 否则里面的数组元素都没有了
+
+        console.log('------');
+        console.log('------');
+        console.log('------');
+
+        var xd = [];
+        for (var i = 0; i < 10; i++) {
+            xd[i] = i + 1;
+        }
+        console.log(xd);
+
+        console.log('------');
+        console.log('------');
+        console.log('------');
+
+        var ber = [5, 44, 4, 0, 95, 11, 53, 20, 02, 38, 69, 10];
+        var ne = [];
+        // var j = 0;
+        for (var i = 0; i < ber.length; i++) {
+            if (ber[i] >= 10) {
+                // 新数组索引号应该从0开始，依次递增
+                ne[ne.length] = ber[i];
+            }
+        }
+        console.log(ne);
+        // 这个例子有两种方法能做到
+        // 1.在外部建立变量j来记录索引号，然后在循环中自增
+        // var j = 0;
+        //      ne[j] = ber[i];
+        //      j++;
+        // 2.使用ne.length
+    </script>
+</body>
+
+</html>
