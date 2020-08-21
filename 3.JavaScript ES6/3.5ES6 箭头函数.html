@@ -30,14 +30,50 @@
         const sum = num => console.log(num);
         sum(22); // 22
 
-        // 箭头函数不绑定this关键字,箭头函数中的this,指向的是函数定义位置的上下文this。
-        varobj = {
+        var abj = {
             age: 20,
             say: () => {
-                alert(this.age)
+                // 因为箭头函数不绑定this所以它指向对象所在的对象的父级，就是Window
+                console.log(this)
             }
         }
-        obj.say(); // 返回undefined 因为箭头函数没有this
+        abj.say(); // 返回Window对象
+
+        // 箭头函数不绑定this关键字,箭头函数中的this,指向的是函数定义位置的上下文this。
+        var obj = {
+                age: 20,
+                say: () => {
+                    alert(this.age)
+                }
+            }
+            // obj.say(); // 返回undefined 因为箭头函数没有this
+
+        // 这里的_ns可以是形参
+        let objFn = n => ({
+            id: n,
+            name: '许东'
+        });
+        console.log(objFn('22'));
+
+
+        // 因为没有function所以箭头函数没有形成自己的作用域
+
+
+        // 箭头函数不能作为构造函数
+
+        let afn = () => {
+                'xd'
+            }
+            // new afn(); // 报错 afn is not a constructor
+        let bfn = () => {
+                console.log(this);
+            }
+            // new bfn(); // 报错 afn is not a constructor
+        bfn(); // window
+        let cfn = () => {
+            console.log(this.prototype);
+        }
+        cfn(); // 返回undefined
     </script>
 </body>
 

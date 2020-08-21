@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // Promise.all([
+    //     new Promise((resolve, reject) => {
+    //       $ajax({
+    //         url:'url1',
+    //         success:function (data) {
+    //           resolve(data)
+    //         }
+    //       })
+    //     }),
+    //     new Promise((resolve, reject) => {
+    //       $ajax({
+    //         url:'url2',
+    //         success:function (data) {
+    //           resolve(data)
+    //         }
+    //       })
+    //     })
+    // ]).then(results => {
+    //   console.log(results);
+    // })
+
+    Promise.all([
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({name:'why',age:18})
+        },2000)
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({name:'kobe',age:38})
+        },1000)
+      })
+    ]).then(results => {
+      console.log(results);
+    })
+</script>
+
+</body>
+</html>

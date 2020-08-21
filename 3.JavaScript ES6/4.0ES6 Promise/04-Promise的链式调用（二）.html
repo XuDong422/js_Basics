@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+// wrapped into
+//    网络请求：aaa -> 自己处理
+//    处理：aaa111 ->自己处理
+//    处理：aaa111222 ->自己处理
+
+    new Promise((resolve, reject) => {
+
+      setTimeout(() => {
+        resolve('aaa')
+      },500)
+
+    }).then(res => {
+      console.log(res,'第一层处理代码');
+
+      return new Promise((resolve) => {
+        resolve(res + '111')
+      })
+
+    }).then(res => {
+      console.log(res,'第二层处理代码');
+
+      return new Promise((resolve) => {
+        resolve(res + '222')
+      })
+
+    }).then(res => {
+      console.log(res,'第三层处理代码');
+    })
+
+setTimeout(() =>{
+  console.log('--------------');
+},1000)
+
+
+//new Promise(resolve => resolve(结果))这个是简写
+new Promise((resolve, reject) => {
+
+  setTimeout(() => {
+    resolve('aaa')
+  },1500)
+
+}).then(res => {
+  console.log(res,'第一层处理代码');
+
+  return Promise.resolve(res + '111')
+
+}).then(res => {
+  console.log(res,'第二层处理代码');
+
+  return Promise.resolve(res + '222')
+
+}).then(res => {
+  console.log(res,'第三层处理代码');
+})
+
+
+setTimeout(() =>{
+  console.log('--------------');
+},2000)
+
+
+//return res + '111'这个是最简写
+new Promise((resolve, reject) => {
+
+  setTimeout(() => {
+    resolve('aaa')
+  },2500)
+
+}).then(res => {
+  console.log(res,'第一层处理代码');
+
+  return res + '111'
+
+}).then(res => {
+  console.log(res,'第二层处理代码');
+
+  return res + '222'
+
+}).then(res => {
+  console.log(res,'第三层处理代码');
+})
+
+
+setTimeout(() =>{
+  console.log('--------------');
+},3000)
+
+
+//一步跳出后面全部不做
+new Promise((resolve, reject) => {
+
+  setTimeout(() => {
+    resolve('aaa')
+  },3500)
+
+}).then(res => {
+  console.log(res,'第一层处理代码');
+  return Promise.reject('error')
+  // resolve(res + '111')
+  // throw 'error'效果与reject一样
+
+}).then(res => {
+  console.log(res,'第二层处理代码');
+
+  resolve(res + '222')
+
+}).then(res => {
+  console.log(res,'第三层处理代码');
+}).catch(err => {
+  console.log(err);
+})
+
+
+
+    // 多个异步操作旧方法示例，新方法是使用promise.all方法在下一个人HTML
+    //只是示例这代码不成功
+    let isResult1 = false
+    let isResult2 = false
+
+    //网络请求一
+    $ajax({
+      url:'',
+      success:function () {
+        console.log('结果1');
+        isResult1 = true;
+        handleResult()
+      }
+    })
+
+    //网络请求二
+    $ajax({
+      url:'',
+      success:function () {
+        console.log('结果1');
+        isResult1 = true;
+        handleResult()
+      }
+    })
+
+    function handleResult(){
+      if (isResult1 && isResult2) {
+        console.log('这里是两个异步网络操作');
+      }
+    }
+</script>
+
+</body>
+</html>

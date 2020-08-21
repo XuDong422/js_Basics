@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+  // new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve()
+  //   },1000)
+  // }).then(() => {
+  //   console.log('Hello World');
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve()
+  //     },1000)
+  //   })
+  // })
+
+
+    //new出Promise这个构造函数
+    // 其中resolve代表成功，成功则执行then，成功包括网络请求成功
+    // 而reject代表失败，失败则执行err，失败包括网络请求失败
+
+  //下面这个例子是成功后调用resolve，由.then处理
+new Promise((resolve, reject) => {
+  //第一次成功执行then
+  //setTimeout在一秒后执行resolve成功方法，这里可以用来确定网络请求是否成功具体请见axios
+  setTimeout(() => {
+    resolve()
+  },1000)
+
+}).then(() => {
+  //第一次成功后执行代码
+  console.log('Hello World');
+  console.log('Hello World');
+  console.log('Hello World');
+
+  //这里是第一次执行后再去输出一个Promise
+  return new Promise((resolve, reject) => {
+
+    //第二次成功执行then，注意then的位置，不是跟在这个Promise后面，而是第一个。
+    setTimeout(() => {
+      resolve()
+    },1000)
+
+  })
+}).then(() => {
+
+  //第二次成功后执行代码
+  console.log('Hello Vue.js');
+  console.log('Hello Vue.js');
+  console.log('Hello Vue.js');
+
+  return new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+      resolve()
+    },1000)
+
+  })
+
+}).then(() => {
+
+  console.log('Hello XD');
+  console.log('Hello XD');
+  console.log('Hello XD');
+
+})
+
+//    什么情况下会用到Promise?
+//   一般情况下是有异步操作时，使用Promise对这个异步操作进行封装
+//   new ->构造函数(1.保存了一些状态信息 2.执行传入的函数)
+//   在执行传入的回调函数时，会传入两个参数，resolve, reject.本身又是函数
+
+  //下面这个例子是失败后调用reject，由.catch处理
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //成功的时候调用resolve
+      // resolve('Hello World')
+      //失败的时候调用reject
+      reject('error message')
+    }, 4000)
+  //  箭头函数在只有一个的时候可以不用括号例子：then(data => {
+  }). then((data) => {
+    console.log(data);
+  }).catch((err) => {
+    console.log(err);
+  })
+
+
+</script>
+
+</body>
+</html>
